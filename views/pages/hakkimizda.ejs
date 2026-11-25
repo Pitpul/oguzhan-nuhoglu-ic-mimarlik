@@ -1,0 +1,136 @@
+<%- include('../partials/head') %>
+<body>
+<%- include('../partials/navbar') %>
+
+<main id="icerik">
+  <%- include('../partials/page-hero', {
+    eyebrow: 'Stüdyo & Tasarım Felsefesi',
+    title: 'Mekânın Ruhunu Şekillendiren',
+    accent: 'Mimari Anlayış',
+    lead: 'Mekânları yalnızca görsel bir kompozisyon olarak değil; ışığın, dokunun ve insan deneyiminin zamansız bir ahengi olarak ele alıyoruz.'
+  }) %>
+
+  <!-- Stüdyo anlatısı -->
+  <section class="section-y bg-ivory">
+    <div class="container-x grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-6">
+        <div class="relative border border-charcoal/15 bg-bone p-3 shadow-2xl">
+          <div class="absolute -left-2 -top-2 h-5 w-5 border-l border-t border-bronze"></div>
+          <div class="absolute -bottom-2 -right-2 h-5 w-5 border-b border-r border-bronze"></div>
+          <div class="parallax-frame reveal aspect-[4/3] overflow-hidden bg-ivory" data-reveal="clip">
+            <div class="parallax-media h-full w-full" data-parallax-media="20">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80" alt="Mimari çizim masası, maketler ve eskizler" loading="lazy" decoding="async" width="1200" height="900" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+            </div>
+          </div>
+          <div class="mt-3 flex items-center justify-between border-t border-charcoal/10 px-1 pt-3 font-mono text-[11px] tracking-wide text-muted">
+            <span>ATÖLYE &amp; TASARIM SÜRECİ</span><span>NİŞANTAŞI • BODRUM</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col justify-center lg:col-span-6" data-stagger="75">
+        <p class="eyebrow reveal mb-4 flex items-center gap-3"><span class="h-px w-6 bg-bronze"></span>Kökler ve Vizyon</p>
+        <h2 class="display reveal mb-6 text-3xl sm:text-4xl lg:text-5xl" data-reveal="title">Her çizgi, yaşama duyulan saygının bir ifadesidir.</h2>
+        <div class="reveal space-y-5 text-sm font-light leading-relaxed text-muted sm:text-base">
+          <p>Oğuzhan Nuhoğlu İç Mimarlık, mimarlık ve iç mekân tasarımını yalnızca hacimsel bir planlama değil; bireyin ruhsal dinginliğine hizmet eden bütüncül bir sanat olarak görür. Her projede mekânın konumunu, doğal ışığın yönünü ve kullanıcıların yaşam ritmini analiz ederek işe başlarız.</p>
+          <p>Trendlerin hızlı tüketiminden bilinçli olarak uzak duruyoruz. Zanaatkârlık mirasını modern mimari disiplinle buluştururken; ham meşe, traverten, doğal mermer ve pirinç gibi zamanla patina alarak güzelleşen hakiki malzemelere sadık kalıyoruz.</p>
+          <p>Bizim için lüks; gösterişli fazlalıklar değil; malzemenin dürüstlüğü, oranların kusursuzluğu ve mekânda hissedilen huzurdur.</p>
+        </div>
+        <div class="reveal mt-8 border-t border-charcoal/10 pt-6">
+          <p class="font-serif text-2xl italic tracking-wide">Oğuzhan Nuhoğlu</p>
+          <p class="mt-1 text-xs font-medium uppercase tracking-widest text-bronze-dark">Kurucu &amp; İç Mimar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rakamlar (yalnızca doğrulanabilir veriler) -->
+  <section class="border-y border-charcoal/15 bg-bone py-12 sm:py-14">
+    <div class="container-x">
+      <dl class="grid grid-cols-2 divide-charcoal/15 md:grid-cols-4 md:divide-x" data-stagger="70">
+        <% [
+          [projectCount, 'Portfolyodaki Proje'],
+          [site.offices.length, 'Stüdyo (İstanbul-Maltepe)'],
+          [4, 'Uzmanlık Alanı'],
+          [4, 'Aşamalı Tasarım Süreci']
+        ].forEach((m) => { %>
+          <div class="reveal flex flex-col px-4 py-6 text-center md:py-0 md:text-left lg:px-8">
+            <dt class="order-2 mt-2 text-xs font-medium uppercase tracking-widest text-muted"><%= m[1] %></dt>
+            <dd class="font-serif text-5xl font-light tracking-tight text-charcoal"><%= m[0] %></dd>
+          </div>
+        <% }) %>
+      </dl>
+    </div>
+  </section>
+
+  <!-- İlkeler -->
+  <section class="section-y bg-ivory">
+    <div class="container-x">
+      <div class="mb-14 max-w-2xl" data-stagger="75">
+        <p class="eyebrow reveal mb-3 flex items-center gap-3"><span class="h-px w-6 bg-bronze"></span>Mimari Prensipler</p>
+        <h2 class="display reveal text-3xl sm:text-4xl lg:text-5xl" data-reveal="title">Tasarımımızın Temelini Oluşturan Üç İlke</h2>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8" data-stagger="85">
+        <% [
+          ['01', 'Zamansız Estetik', 'Yalın ve Dingin Form Dili', 'Geçici trendlerin gürültüsünden arınmış, yıllar geçtikçe değer kazanan mimari formlar kurguluyoruz. Sadeliğin içindeki derinliği açığa çıkarıyoruz.'],
+          ['02', 'İşlevsel Kusursuzluk', 'İnsan Ölçeğinde Ergonomi', 'Estetiğin ergonomiyle buluştuğu, her santimetresi günlük yaşam ritmine cevap veren; akıllı sirkülasyona ve işlevsel zarafete sahip yaşam senaryoları tasarlıyoruz.'],
+          ['03', 'Doğal Doku & Işık', 'Duyusal Katmanlar', 'Doğal taş, ham meşe, keten ve bronzun gün ışığıyla buluştuğu; mekâna yalnızca bakılan değil, hissedilen bir duyusal derinlik kazandırıyoruz.']
+        ].forEach((c) => { %>
+          <article class="reveal group relative flex flex-col border border-charcoal/15 bg-bone p-8 transition-all duration-500 hover:-translate-y-1 hover:border-bronze hover:shadow-lg lg:p-10">
+            <span class="absolute right-0 top-0 flex h-8 w-8 items-center justify-center border-b border-l border-charcoal/10 font-mono text-xs text-muted/60 group-hover:text-bronze-dark"><%= c[0] %></span>
+            <span class="mb-4 block text-xs font-semibold uppercase tracking-widest text-bronze-dark"><%= c[1] %></span>
+            <h3 class="mb-4 font-serif text-2xl font-normal"><%= c[2] %></h3>
+            <p class="text-sm font-light leading-relaxed text-muted"><%= c[3] %></p>
+          </article>
+        <% }) %>
+      </div>
+
+      <figure class="mt-16 border border-charcoal/15 bg-bone p-3 lg:p-4">
+        <div class="parallax-frame reveal relative aspect-[16/10] overflow-hidden sm:aspect-[21/9]" data-reveal="clip">
+          <div class="parallax-media h-full w-full" data-parallax-media="24">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80" alt="Doğal taş dokusu ve geniş cam yüzeylerle tasarlanmış villa iç mekânı" loading="lazy" decoding="async" width="1800" height="800" class="h-full w-full object-cover">
+          </div>
+          <figcaption class="absolute inset-0 flex items-end bg-gradient-to-t from-charcoal/80 via-transparent to-transparent p-5 sm:p-8">
+            <span class="max-w-xl font-serif text-xl font-light text-white sm:text-3xl">Taş doku ve kesintisiz ufuk çizgisiyle akıcı bir hacim dengesi.</span>
+          </figcaption>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Süreç -->
+  <section class="section-y border-t border-charcoal/10 bg-bone">
+    <div class="container-x">
+      <div class="mx-auto mb-14 max-w-3xl text-center sm:mb-20" data-stagger="70">
+        <p class="eyebrow reveal mb-3">Süreç Mimarisi</p>
+        <h2 class="display reveal text-3xl sm:text-4xl lg:text-5xl" data-reveal="title">Fikirden Gerçeğe Mimari Yolculuk</h2>
+        <p class="reveal mt-4 text-sm font-light text-muted sm:text-base">Her adımda titizlikle planlanan dört aşamalı tasarım metodolojimiz.</p>
+      </div>
+      <ol class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" data-stagger="80">
+        <% [
+          ['01.', 'Keşif & Mekânsal Analiz', 'Yaşam tarzının, beklentilerin ve mevcut hacmin ışık, yön ve strüktürel dinamiklerinin yerinde incelenmesi.', 'Aşama I • Konsept'],
+          ['02.', '3D Konsept Modelleme', 'Doğal malzeme moodboard’ları, fotogerçekçi 3D görselleştirmeler ve atmosferin onaylanması.', 'Aşama II • Görselleştirme'],
+          ['03.', 'Teknik Detay Çözümleri', 'Uygulama paftaları, aydınlatma planları, özel mobilya detayları ve tesisat entegrasyonu.', 'Aşama III • Paftalama'],
+          ['04.', 'Anahtar Teslim Uygulama', 'Şantiye koordinasyonu, usta zanaatkârlarla montaj ve uygulamanın takibi.', 'Aşama IV • Teslimat']
+        ].forEach((s, i) => { %>
+          <li class="reveal border-t-2 <%= i === 0 ? 'border-bronze' : 'border-charcoal/30' %> pt-6">
+            <span class="block font-mono text-2xl font-light <%= i === 0 ? 'text-bronze' : 'text-charcoal/50' %>"><%= s[0] %></span>
+            <h3 class="mb-3 mt-3 font-serif text-xl font-medium"><%= s[1] %></h3>
+            <p class="text-sm font-light leading-relaxed text-muted"><%= s[2] %></p>
+            <span class="mt-6 block font-mono text-[10px] uppercase tracking-widest text-muted-light"><%= s[3] %></span>
+          </li>
+        <% }) %>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-y relative border-t border-charcoal/10 bg-ivory text-center">
+    <div class="container-x reveal mx-auto max-w-4xl" data-reveal="scale">
+      <p class="mb-6 text-xs font-medium uppercase tracking-wide-arch text-muted">Oğuzhan Nuhoğlu İç Mimarlık Felsefesi</p>
+      <blockquote class="font-serif text-4xl font-light italic leading-tight sm:text-6xl lg:text-7xl">“Per Aspera Ad Astra”</blockquote>
+      <p class="mx-auto mt-6 max-w-xl text-sm font-light italic text-muted sm:text-base">Zorluklardan yıldızlara: tutkuyla örülen mimari detayların zamana meydan okuyan güzelliğe dönüşümü.</p>
+      <a href="/iletisim" class="btn btn-dark mt-10">Yeni Bir Proje Başlatın <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

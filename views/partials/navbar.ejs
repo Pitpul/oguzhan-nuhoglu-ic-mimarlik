@@ -1,0 +1,73 @@
+<%
+  const page = locals.currentPage || '';
+  const cur = (key) => (page === key ? 'aria-current="page"' : '');
+  const serviceLinks = [
+    { href: '/hizmetler#konut', title: 'Konut İç Mimarisi', text: 'Villa, rezidans ve daire tasarımları' },
+    { href: '/hizmetler#ticari', title: 'Ticari Alan Tasarımı', text: 'Ofis, mağaza ve konsept mekânlar' },
+    { href: '/hizmetler#3d', title: '3D Görselleştirme', text: 'Fotogerçekçi render ve sunumlar' },
+    { href: '/hizmetler#anahtar-teslim', title: 'Anahtar Teslim Uygulama', text: 'Şantiye yönetimi ve uygulama' }
+  ];
+%><a href="#icerik" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-charcoal focus:px-5 focus:py-3 focus:text-xs focus:text-bone">İçeriğe geç</a>
+
+<header class="site-header" id="site-header">
+  <div class="container-x flex h-20 items-center justify-between">
+    <a href="/" class="group flex items-center gap-3.5" aria-label="<%= site.name %> - Ana Sayfa">
+      <img src="<%= site.logo %>" alt="" width="44" height="44" class="h-11 w-11 rounded-full border border-charcoal/15 bg-white object-cover p-0.5 shadow-sm transition-transform duration-300 group-hover:scale-105">
+      <span class="flex flex-col leading-none">
+        <span class="font-serif text-sm font-semibold uppercase tracking-[0.2em] text-charcoal sm:text-base"><%= site.shortName %></span>
+        <span class="mt-1.5 text-[9px] font-medium uppercase tracking-wide-arch text-bronze-dark"><%= site.subtitle %></span>
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex xl:gap-10" aria-label="Ana menü">
+      <div class="group relative">
+        <a href="/hizmetler" class="nav-link inline-flex items-center gap-1.5" <%- cur('services') %>>
+          Hizmetlerimiz
+          <svg class="h-3 w-3 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+        </a>
+        <div class="invisible absolute left-0 top-full w-72 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+          <div class="rounded-xl border border-charcoal/10 bg-bone py-2 shadow-xl">
+            <% serviceLinks.forEach((s) => { %>
+              <a href="<%= s.href %>" class="block px-5 py-3 transition-colors hover:bg-ivory">
+                <span class="block text-[11px] font-semibold uppercase tracking-widest text-charcoal"><%= s.title %></span>
+                <span class="text-xs font-light text-muted"><%= s.text %></span>
+              </a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <a href="/hakkimizda" class="nav-link" <%- cur('about') %>>Hakkımızda</a>
+      <a href="/projeler" class="nav-link" <%- cur('projects') %>>Projeler</a>
+      <a href="/iletisim" class="btn btn-outline btn-sm hover:!border-bronze hover:!bg-bronze hover:!text-white" <%- cur('contact') %>>İletişim</a>
+    </nav>
+
+    <button type="button" id="menu-toggle" class="-mr-2 flex h-11 w-11 items-center justify-center rounded-full text-charcoal transition-colors hover:text-bronze-dark lg:hidden" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path data-icon-open d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" stroke-width="1.5"/>
+        <path data-icon-close class="hidden" d="M6 6l12 12M18 6L6 18" stroke-linecap="round" stroke-width="1.5"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div id="mobile-menu" class="mobile-drawer" aria-hidden="true">
+  <nav class="flex flex-col" aria-label="Mobil menü">
+    <button type="button" id="mobile-sub-toggle" class="flex w-full items-center justify-between border-b border-charcoal/10 py-4 text-left text-sm font-medium uppercase tracking-arch text-charcoal" aria-expanded="false" aria-controls="mobile-sub-menu">
+      <span>Hizmetlerimiz</span>
+      <svg class="h-4 w-4 transition-transform" data-sub-arrow fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </button>
+    <div id="mobile-sub-menu" class="hidden space-y-1 rounded-lg bg-ivory px-4 py-3">
+      <% serviceLinks.forEach((s) => { %>
+        <a href="<%= s.href %>" class="mobile-link block py-2 text-sm text-muted hover:text-bronze-dark"><%= s.title %></a>
+      <% }) %>
+    </div>
+    <a href="/hakkimizda" class="mobile-link border-b border-charcoal/10 py-4 text-sm font-medium uppercase tracking-arch" <%- cur('about') %>>Hakkımızda</a>
+    <a href="/projeler" class="mobile-link border-b border-charcoal/10 py-4 text-sm font-medium uppercase tracking-arch" <%- cur('projects') %>>Projeler</a>
+    <a href="/iletisim" class="mobile-link border-b border-charcoal/10 py-4 text-sm font-medium uppercase tracking-arch" <%- cur('contact') %>>İletişim</a>
+  </nav>
+  <div class="mt-10 space-y-2 border-t border-charcoal/10 pt-6 text-sm text-muted">
+    <p class="font-serif text-lg italic text-charcoal">“Estetik, işlevsellik ve ruhun dengesi.”</p>
+    <p><a href="mailto:<%= site.email %>" class="hover:text-bronze-dark"><%= site.email %></a></p>
+    <p><a href="tel:<%= site.phoneHref %>" class="hover:text-bronze-dark"><%= site.phone %></a></p>
+  </div>
+</div>

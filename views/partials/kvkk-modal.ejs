@@ -1,0 +1,15 @@
+<dialog id="kvkk-modal" class="m-auto w-[min(92vw,44rem)] max-h-[88vh] overflow-hidden rounded-2xl border border-charcoal/15 bg-bone p-0 text-charcoal shadow-2xl backdrop:bg-charcoal/70 backdrop:backdrop-blur-sm" aria-labelledby="kvkk-modal-title">
+  <div class="flex items-center justify-between border-b border-charcoal/10 px-6 py-4">
+    <h2 id="kvkk-modal-title" class="font-serif text-2xl font-normal">KVKK Aydınlatma Metni</h2>
+    <button type="button" data-kvkk-close class="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 text-charcoal transition-colors hover:bg-charcoal hover:text-bone" aria-label="Kapat">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" stroke-width="1.5"/></svg>
+    </button>
+  </div>
+  <div class="max-h-[calc(88vh-8.5rem)] overflow-y-auto px-6 py-6">
+    <%- include('kvkk-content') %>
+  </div>
+  <div class="flex flex-wrap items-center justify-between gap-3 border-t border-charcoal/10 px-6 py-4">
+    <a href="/kvkk" class="link-arrow">Ayrı sayfada aç</a>
+    <button type="button" data-kvkk-close class="btn btn-dark btn-sm">Okudum, Kapat</button>
+  </div>
+</dialog>

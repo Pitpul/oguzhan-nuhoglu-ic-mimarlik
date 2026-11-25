@@ -1,0 +1,409 @@
+/* Genel site davranışları: header, mobil menü, scroll reveal, hero video, katmanlı scroll & parallax, SSS akordeonu */
+(function () {
+  'use strict';
+
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduceMotion = motionQuery.matches;
+  var root = document.documentElement;
+
+  function clamp(val, min, max) {
+    return Math.max(min, Math.min(max, val));
+  }
+
+  // --- 1. Header: kaydırınca gölge ---
+  var header = document.getElementById('site-header');
+  function updateHeader() {
+    if (header) header.classList.toggle('is-scrolled', window.scrollY > 40);
+  }
+
+  // --- 2. Mobil menü ---
+  var toggle = document.getElementById('menu-toggle');
+  var drawer = document.getElementById('mobile-menu');
+  function setMenu(open) {
+    if (!toggle || !drawer) return;
+    drawer.classList.toggle('is-open', open);
+    drawer.setAttribute('aria-hidden', String(!open));
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+    root.classList.toggle('overflow-hidden', open);
+    var iconOpen = toggle.querySelector('[data-icon-open]');
+    var iconClose = toggle.querySelector('[data-icon-close]');
+    if (iconOpen && iconClose) {
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+    }
+  }
+  if (toggle && drawer) {
+    toggle.addEventListener('click', function () {
+      setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    drawer.querySelectorAll('.mobile-link').forEach(function (link) {
+      link.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) {
+      if (e.matches) setMenu(false);
+    });
+  }
+  var subToggle = document.getElementById('mobile-sub-toggle');
+  var subMenu = document.getElementById('mobile-sub-menu');
+  if (subToggle && subMenu) {
+    subToggle.addEventListener('click', function () {
+      var open = subToggle.getAttribute('aria-expanded') !== 'true';
+      subToggle.setAttribute('aria-expanded', String(open));
+      subMenu.classList.toggle('hidden', !open);
+      var arrow = subToggle.querySelector('[data-sub-arrow]');
+      if (arrow) arrow.classList.toggle('rotate-180', open);
+    });
+  }
+
+  // --- 3. Scroll reveal (Intersection Observer) ---
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  }
+
+  // --- 4. Hero Video: kesintisiz otomatik oynatma, mobil uyumluluk ve poster fallback ---
+  var video = document.querySelector('[data-hero-video]');
+  if (video) {
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
+    var saveData = connection.saveData === true;
+
+    // Otomatik oynatma için tarayıcı politikalarının zorunlu kıldığı özellikler
+    video.defaultMuted = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    function hideVideoShowFallback() {
+      video.pause();
+      video.classList.add('hidden');
+    }
+
+    function tryPlayVideo() {
+      if (saveData || video.classList.contains('hidden')) return;
+      video.muted = true;
+      var playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {
+          // Tarayıcı düşük güç modunda otomatik oynatmayı bekletirse poster görünür kalır
+        });
+      }
+    }
+
+    // Kaynak yükleme hatalarında siyah ekran yerine alttaki fallback görseli göster
+    var sources = video.querySelectorAll('source');
+    var failedSources = 0;
+    sources.forEach(function (srcEl) {
+      srcEl.addEventListener('error', function () {
+        failedSources += 1;
+        if (failedSources >= sources.length) hideVideoShowFallback();
+      });
+    });
+    video.addEventListener('error', hideVideoShowFallback);
+
+    if (saveData) {
+      // Veri tasarrufu açıksa yalnızca poster/fallback görseli gösterilir
+      hideVideoShowFallback();
+    } else {
+      if (video.readyState >= 2) {
+        tryPlayVideo();
+      } else {
+        video.addEventListener('loadeddata', tryPlayVideo, { once: true });
+        video.addEventListener('canplay', tryPlayVideo, { once: true });
+      }
+      tryPlayVideo();
+
+      // Mobil cihazlarda ilk dokunuşta (eğer pil tasarrufu durdurduysa) oynatmayı başlat
+      var unlockEvents = ['touchstart', 'click'];
+      var unlockHandler = function () {
+        if (video.paused && !video.classList.contains('hidden')) tryPlayVideo();
+        unlockEvents.forEach(function (evt) {
+          window.removeEventListener(evt, unlockHandler);
+        });
+      };
+      unlockEvents.forEach(function (evt) {
+        window.addEventListener(evt, unlockHandler, { once: true, passive: true });
+      });
+
+      // Hero alanı ekrandan tamamen çıktığında videoyu duraklat, geri gelince devam ettir (performans)
+      if ('IntersectionObserver' in window) {
+        var heroSection = document.getElementById('hero');
+        if (heroSection) {
+          var videoVisObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                tryPlayVideo();
+              } else if (!video.paused) {
+                video.pause();
+              }
+            });
+          }, { threshold: 0.01 });
+          videoVisObserver.observe(heroSection);
+        }
+      }
+    }
+  }
+
+  // --- 5. Katmanlı Scroll Animasyonu (Sticky Layered Sections) & Görsel Parallax ---
+  var stack = document.querySelector('[data-scroll-stack]');
+  var layerSections = stack ? Array.prototype.slice.call(stack.querySelectorAll('[data-layer-section]')) : [];
+  var heroParallaxText = document.querySelector('[data-parallax]');
+  var heroBg = document.querySelector('[data-hero-bg]');
+  var parallaxMediaEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax-media]'));
+
+  var layerMetrics = [];
+  var activeParallaxSet = new Set();
+
+  // Yalnızca ekrana yakın olan parallax görsellerini hesapla
+  if ('IntersectionObserver' in window && parallaxMediaEls.length) {
+    var parallaxObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) activeParallaxSet.add(entry.target);
+        else activeParallaxSet.delete(entry.target);
+      });
+    }, { rootMargin: '15% 0px 15% 0px', threshold: 0 });
+    parallaxMediaEls.forEach(function (el) { parallaxObserver.observe(el); });
+  } else {
+    parallaxMediaEls.forEach(function (el) { activeParallaxSet.add(el); });
+  }
+
+  function resetLayerStyles() {
+    if (stack) stack.classList.remove('is-layered');
+    layerSections.forEach(function (sec) {
+      sec.style.removeProperty('--sticky-top');
+      sec.style.removeProperty('z-index');
+      var inner = sec.querySelector('[data-layer-inner]');
+      var veil = sec.querySelector('[data-layer-veil]');
+      if (inner) {
+        inner.style.transform = '';
+        inner.style.opacity = '';
+      }
+      if (veil) veil.style.opacity = '0';
+    });
+    if (heroParallaxText) {
+      heroParallaxText.style.transform = '';
+      heroParallaxText.style.opacity = '';
+    }
+    if (heroBg) heroBg.style.transform = '';
+    parallaxMediaEls.forEach(function (el) {
+      el.style.removeProperty('--parallax-y');
+      el.style.removeProperty('--parallax-scale');
+    });
+  }
+
+  function measureStack() {
+    if (!stack || !layerSections.length || reduceMotion) {
+      resetLayerStyles();
+      return;
+    }
+
+    // Doğal akış konumlarını (flowTop) ölçmek için sticky sınıfını geçici kaldır
+    stack.classList.remove('is-layered');
+    var vh = window.innerHeight;
+    var stackDocTop = stack.getBoundingClientRect().top + window.scrollY;
+
+    layerMetrics = layerSections.map(function (sec, idx) {
+      var h = sec.offsetHeight;
+      var flowTop = stackDocTop + sec.offsetTop;
+      // Bölüm ekran yüksekliğinden uzunsa, içeriğin sonuna gelindiğinde sticky olacak şekilde negatif top verilir
+      var stickyTop = Math.min(0, vh - h);
+      sec.style.setProperty('--sticky-top', stickyTop + 'px');
+      sec.style.zIndex = String(idx + 1);
+      return {
+        el: sec,
+        inner: sec.querySelector('[data-layer-inner]'),
+        veil: sec.querySelector('[data-layer-veil]'),
+        flowTop: flowTop,
+        height: h,
+        stickyTop: stickyTop,
+        isHero: sec.id === 'hero'
+      };
+    });
+
+    stack.classList.add('is-layered');
+  }
+
+  function updateScrollEffects() {
+    updateHeader();
+    if (reduceMotion) return;
+
+    var scrollY = window.scrollY || window.pageYOffset;
+    var vh = window.innerHeight;
+    var isMobile = window.innerWidth < 768;
+
+    // A) Katmanlı bölümlerin birbirinin üzerine binme (overlap) ve derinlik hesabı
+    if (layerMetrics.length > 1) {
+      var maxScaleDrop = isMobile ? 0.026 : 0.052;
+      var maxShiftY = isMobile ? 14 : 30;
+
+      for (var i = 0; i < layerMetrics.length - 1; i++) {
+        var current = layerMetrics[i];
+        var next = layerMetrics[i + 1];
+        if (!current.inner) continue;
+
+        // Sonraki bölümün üst kenarının viewport içindeki konumu (vh -> 0 arası)
+        var nextViewportTop = next.flowTop - scrollY;
+        var rawProgress = 1 - nextViewportTop / vh;
+        var p = clamp(rawProgress, 0, 1);
+
+        if (p <= 0.002) {
+          current.inner.style.transform = '';
+          current.inner.style.opacity = '';
+          if (current.veil) current.veil.style.opacity = '0';
+          if (current.isHero) {
+            if (heroParallaxText) {
+              heroParallaxText.style.transform = '';
+              heroParallaxText.style.opacity = '';
+            }
+            if (heroBg) heroBg.style.transform = '';
+          }
+        } else {
+          // Yumuşak eğri (smooth cubic blend) ile ani sıçramaları önle
+          var eased = p * p * (3 - 2 * p);
+          var scale = (1 - eased * maxScaleDrop).toFixed(4);
+          var shiftY = (-eased * maxShiftY).toFixed(1);
+          var opacity = (1 - eased * 0.16).toFixed(3);
+
+          current.inner.style.transform = 'translate3d(0,' + shiftY + 'px,0) scale3d(' + scale + ',' + scale + ',1)';
+          current.inner.style.opacity = opacity;
+          if (current.veil) {
+            current.veil.style.opacity = (eased * 0.42).toFixed(3);
+          }
+
+          // Hero katmanı için ekstra arka plan derinlik & metin parallax geçişi
+          if (current.isHero) {
+            if (heroParallaxText) {
+              heroParallaxText.style.transform = 'translate3d(0,' + (-eased * (isMobile ? 22 : 44)).toFixed(1) + 'px,0)';
+              heroParallaxText.style.opacity = String(Math.max(0, 1 - eased * 1.15).toFixed(3));
+            }
+            if (heroBg) {
+              var bgScale = (1 + eased * 0.045).toFixed(4);
+              var bgY = (eased * (isMobile ? 16 : 36)).toFixed(1);
+              heroBg.style.transform = 'translate3d(0,' + bgY + 'px,0) scale3d(' + bgScale + ',' + bgScale + ',1)';
+            }
+          }
+        }
+      }
+    }
+
+    // B) Görsellerde derinlik ve parallax hareketi
+    var scaleVal = isMobile ? '1.045' : '1.075';
+    activeParallaxSet.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.bottom < -50 || rect.top > vh + 50) return;
+      var range = parseFloat(el.getAttribute('data-parallax-media')) || 18;
+      if (isMobile) range *= 0.55;
+      // Elemanın merkezi viewport merkezine göre nerede? (-1 üst, 0 merkez, +1 alt)
+      var centerOffset = (rect.top + rect.height * 0.5 - vh * 0.5) / (vh * 0.65);
+      var clampedOffset = clamp(centerOffset, -1, 1);
+      var translateY = (-clampedOffset * range).toFixed(1);
+      el.style.setProperty('--parallax-y', translateY + 'px');
+      el.style.setProperty('--parallax-scale', scaleVal);
+    });
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () {
+      updateScrollEffects();
+      ticking = false;
+    });
+  }
+
+  measureStack();
+  updateScrollEffects();
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('load', function () {
+    measureStack();
+    updateScrollEffects();
+  });
+
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      measureStack();
+      updateScrollEffects();
+    }, 100);
+  });
+
+  if ('ResizeObserver' in window && layerSections.length) {
+    var roTimer = null;
+    var ro = new ResizeObserver(function () {
+      clearTimeout(roTimer);
+      roTimer = setTimeout(function () {
+        measureStack();
+        updateScrollEffects();
+      }, 60);
+    });
+    layerSections.forEach(function (sec) { ro.observe(sec); });
+  }
+
+  motionQuery.addEventListener('change', function (e) {
+    reduceMotion = e.matches;
+    measureStack();
+    updateScrollEffects();
+  });
+
+  // Sticky bölümlerde sayfa içi (#studyo, #hizmetlerimiz, #iletisim) linklerin doğal akış konumuna kaydırması
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var hash = anchor.getAttribute('href');
+      if (!hash || hash.length < 2) return;
+      var targetId = hash.slice(1);
+      var metric = null;
+      for (var i = 0; i < layerMetrics.length; i++) {
+        if (layerMetrics[i].el.id === targetId) {
+          metric = layerMetrics[i];
+          break;
+        }
+      }
+      if (metric) {
+        e.preventDefault();
+        window.scrollTo({
+          top: Math.max(0, metric.flowTop - 24),
+          behavior: reduceMotion ? 'auto' : 'smooth'
+        });
+        if (history.pushState) history.pushState(null, '', hash);
+      }
+    });
+  });
+
+  // --- 6. SSS akordeonu (aynı anda tek madde açık) ---
+  var faq = document.querySelector('[data-faq]');
+  if (faq) {
+    var buttons = faq.querySelectorAll('[data-faq-btn]');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var willOpen = btn.getAttribute('aria-expanded') !== 'true';
+        buttons.forEach(function (b) {
+          var open = b === btn && willOpen;
+          b.setAttribute('aria-expanded', String(open));
+          var panel = document.getElementById(b.getAttribute('aria-controls'));
+          if (panel) panel.setAttribute('data-open', String(open));
+          var icon = b.querySelector('[data-faq-icon]');
+          if (icon) icon.textContent = open ? '×' : '+';
+        });
+      });
+    });
+  }
+})();

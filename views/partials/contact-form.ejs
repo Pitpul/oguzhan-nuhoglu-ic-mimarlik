@@ -1,0 +1,71 @@
+<%
+  const f = locals.form || { values: {}, errors: {} };
+  const v = f.values || {};
+  const e = f.errors || {};
+  const invalid = (k) => (e[k] ? 'aria-invalid="true"' : '');
+%>
+<% if (locals.flash) { %>
+  <div class="mb-6 rounded-xl border px-5 py-4 text-sm <%= flash.type === 'success' ? 'border-emerald-700/30 bg-emerald-50 text-emerald-900' : 'border-red-700/30 bg-red-50 text-red-900' %>" role="status">
+    <%= flash.message %>
+  </div>
+<% } %>
+<form id="contact-form" action="/iletisim" method="post" novalidate data-contact-form class="space-y-5 rounded-2xl border border-charcoal/10 bg-white p-6 shadow-xl sm:p-8 lg:p-10">
+  <%- csrfField() %>
+  <div class="hidden" aria-hidden="true">
+    <label>Web sitesi <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+  </div>
+
+  <div id="form-alert" role="alert" aria-live="assertive" class="<%= Object.keys(e).length ? '' : 'hidden ' %>rounded-xl border border-red-700/30 bg-red-50 px-4 py-3 text-sm text-red-900"><%= Object.keys(e).length ? 'Lütfen işaretli alanları kontrol ediniz.' : '' %></div>
+
+  <div>
+    <label class="label" for="full_name">Ad Soyad</label>
+    <input class="field" id="full_name" name="full_name" type="text" autocomplete="name" maxlength="120" required placeholder="Adınız ve soyadınız" value="<%= v.full_name || '' %>" <%- invalid('full_name') %>>
+    <p class="field-error <%= e.full_name ? '' : 'hidden' %>" data-error-for="full_name"><%= e.full_name || '' %></p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+    <div>
+      <label class="label" for="email">E-posta</label>
+      <input class="field" id="email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="ornek@domain.com" value="<%= v.email || '' %>" <%- invalid('email') %>>
+      <p class="field-error <%= e.email ? '' : 'hidden' %>" data-error-for="email"><%= e.email || '' %></p>
+    </div>
+    <div>
+      <label class="label" for="phone">Telefon</label>
+      <input class="field" id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" required placeholder="+90 5xx xxx xx xx" value="<%= v.phone || '' %>" <%- invalid('phone') %>>
+      <p class="field-error <%= e.phone ? '' : 'hidden' %>" data-error-for="phone"><%= e.phone || '' %></p>
+    </div>
+  </div>
+
+  <div>
+    <label class="label" for="project_type">Proje Türü</label>
+    <select class="field" id="project_type" name="project_type" <%- invalid('project_type') %>>
+      <% projectTypes.forEach((t) => { %>
+        <option value="<%= t %>" <%= (v.project_type || projectTypes[0]) === t ? 'selected' : '' %>><%= t %></option>
+      <% }) %>
+    </select>
+    <p class="field-error <%= e.project_type ? '' : 'hidden' %>" data-error-for="project_type"><%= e.project_type || '' %></p>
+  </div>
+
+  <div>
+    <label class="label" for="message">Mesajınız</label>
+    <textarea class="field resize-y" id="message" name="message" rows="4" maxlength="2000" placeholder="Projenizden kısaca bahsedin..." <%- invalid('message') %>><%= v.message || '' %></textarea>
+    <p class="field-error <%= e.message ? '' : 'hidden' %>" data-error-for="message"><%= e.message || '' %></p>
+  </div>
+
+  <div>
+    <label class="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-muted" for="kvkk_accepted">
+      <input class="mt-0.5 h-4 w-4 flex-shrink-0 rounded border-charcoal/30 accent-bronze" id="kvkk_accepted" name="kvkk_accepted" type="checkbox" required <%= v.kvkk_accepted ? 'checked' : '' %> <%- invalid('kvkk_accepted') %>>
+      <span>
+        <button type="button" data-kvkk-open class="font-medium text-charcoal underline decoration-bronze underline-offset-2 hover:text-bronze-dark">KVKK Aydınlatma Metni</button>’ni okudum ve kişisel verilerimin işlenmesi hakkında bilgilendirildim.
+      </span>
+    </label>
+    <p class="field-error <%= e.kvkk_accepted ? '' : 'hidden' %>" data-error-for="kvkk_accepted"><%= e.kvkk_accepted || '' %></p>
+  </div>
+
+  <div id="form-success" role="status" aria-live="polite" class="hidden rounded-xl border border-emerald-700/30 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"></div>
+
+  <button type="submit" class="btn btn-dark w-full py-4" data-submit>
+    <span data-submit-label>Mesajı Gönder</span>
+  </button>
+</form>
+<%- include('kvkk-modal') %>

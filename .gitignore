@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.example
+public/uploads/*
+!public/uploads/.gitkeep
+.local-postgres/
+*.log
+npm-debug.log*
+.DS_Store
+.tmp/
+tmp/
+coverage/
+sql/schema.sql

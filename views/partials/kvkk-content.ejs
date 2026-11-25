@@ -1,0 +1,28 @@
+<%# KVKK Aydınlatma Metni gövdesi — modal ve /kvkk sayfasında ortak kullanılır %>
+<% if (kvkk.isDraft) { %>
+  <div class="mb-6 rounded-xl border border-amber-700/30 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900" role="note">
+    <strong class="font-semibold">TASLAK:</strong> Bu metin yayından önce yetkili hukuk danışmanı tarafından incelenmeli ve “DOLDURULACAK” ile işaretli alanlar gerçek bilgilerle güncellenmelidir.
+  </div>
+<% } %>
+<dl class="mb-6 grid gap-3 rounded-xl border border-charcoal/10 bg-ivory p-4 text-xs text-muted sm:grid-cols-2">
+  <div><dt class="font-semibold uppercase tracking-wider text-charcoal">Veri Sorumlusu</dt><dd><%= kvkk.controller.title %></dd></div>
+<% if (kvkk.controller.registry) { %>
+  <div><dt class="font-semibold uppercase tracking-wider text-charcoal">Sicil / VERBİS</dt><dd><%= kvkk.controller.registry %></dd></div>
+<% } %>
+  <div class="sm:col-span-2"><dt class="font-semibold uppercase tracking-wider text-charcoal">Adres</dt><dd><%= kvkk.controller.address %></dd></div>
+  <div><dt class="font-semibold uppercase tracking-wider text-charcoal">E-posta</dt><dd><%= kvkk.controller.email %></dd></div>
+  <div><dt class="font-semibold uppercase tracking-wider text-charcoal">Telefon</dt><dd><%= kvkk.controller.phone %></dd></div>
+</dl>
+<div class="space-y-5 text-sm font-light leading-relaxed text-muted">
+  <% kvkk.sections.forEach((s) => { %>
+    <section>
+      <h3 class="mb-1.5 font-serif text-lg font-medium text-charcoal"><%= s.title %></h3>
+<% if (s.body) { %>
+      <p><%= s.body %></p>
+<% } %>
+    </section>
+  <% }) %>
+</div>
+<% if (kvkk.lastUpdated) { %>
+<p class="mt-6 text-[11px] text-muted-light">Son güncelleme: <%= kvkk.lastUpdated %></p>
+<% } %>

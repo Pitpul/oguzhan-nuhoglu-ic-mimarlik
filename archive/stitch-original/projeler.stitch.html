@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seçkin Projeler &amp; Mimari Portfolyo | Oğuzhan Nuhoğlu İç Mimarlık</title>
+<meta content="Oğuzhan Nuhoğlu İç Mimarlık seçkin mimari projeler, lüks konut, villa, penthouse ve kurumsal iç mimari portfolyosu." name="description"/>
+<!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cream: '#F5EDE0',
+              ivory: '#FAF7F2',
+              charcoal: '#1A1917',
+              bronze: '#9E7B56',
+              bronzeLight: '#C4A887',
+              borderHairline: 'rgba(26, 25, 23, 0.10)',
+              surface: '#EFE7DA'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          letterSpacing: {
+            arch: '0.22em',
+            wideArch: '0.3em'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Architectural Styles -->
+<style data-purpose="architectural-grid">
+    .bg-grid-hairline {
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(26, 25, 23, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26, 25, 23, 0.035) 1px, transparent 1px);
+    }
+  </style>
+<style data-purpose="transitions-and-utilities">
+    .filter-btn.active {
+      background-color: #1A1917;
+      color: #FAF7F2;
+      border-color: #1A1917;
+    }
+    .modal-backdrop {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    /* Hide scrollbar when modal is open */
+    body.modal-open {
+      overflow: hidden;
+    }
+  </style>
+<!-- END: Custom Architectural Styles -->
+</head>
+<body class="bg-brand-ivory text-brand-charcoal font-sans antialiased selection:bg-brand-bronze selection:text-white">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-[#F5EDE0]/90 backdrop-blur-md border-b border-brand-charcoal/10 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+<!-- Left: Logo & Studio Title -->
+<a class="flex items-center gap-3.5 group" href="index.html">
+<img alt="Oğuzhan Nuhoğlu Logo" class="w-11 h-11 rounded-full object-cover border border-brand-charcoal/15 transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIYAL_cG_peFnqIUxkGTUTPt53_cKXE9c4FWALAm5wxfZcd4A4dFcxTNfYHv0ZKnatT_Ve7pNilVePIqq_7WH1Ge4u3AFJmlSQ5qBCYLs4iQ-NsKnYeDW8p9WjXVREFPFSjE5X8ChYZ52dRxGegDTV0k6AQ4MxAR5WYehfmS6V-VLYRZH14qVa0-xHK6JOSuddZRIsEV6pCK_W_vjPBmmzDWEwBNLfRTUFI2tV2Xyqd5jKwg_Dypyd"/>
+<div class="flex flex-col">
+<span class="font-serif text-lg tracking-[0.16em] uppercase font-medium leading-none text-brand-charcoal">
+            Oğuzhan Nuhoğlu
+          </span>
+<span class="font-sans text-[10px] tracking-wideArch uppercase text-brand-charcoal/60 mt-1">
+            İç Mimarlık
+          </span>
+</div>
+</a>
+<!-- Center & Right Navigation -->
+<nav class="hidden md:flex items-center gap-8 lg:gap-10">
+<!-- Hizmetlerimiz Dropdown -->
+<div class="relative group">
+<a class="text-xs uppercase tracking-arch font-medium text-brand-charcoal/80 hover:text-brand-charcoal flex items-center gap-1.5 py-2 transition-colors" href="hizmetler.html">
+            Hizmetlerimiz
+            <svg class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</a>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 top-full hidden group-hover:block w-56 pt-2">
+<div class="bg-brand-ivory border border-brand-charcoal/10 rounded-sm shadow-xl py-3 px-4 flex flex-col gap-2.5">
+<a class="text-xs tracking-wider uppercase text-brand-charcoal/70 hover:text-brand-charcoal py-1" href="hizmetler.html#konut">Konut &amp; Villa Mimarisi</a>
+<a class="text-xs tracking-wider uppercase text-brand-charcoal/70 hover:text-brand-charcoal py-1" href="hizmetler.html#ticari">Ticari &amp; Ofis Tasarımı</a>
+<a class="text-xs tracking-wider uppercase text-brand-charcoal/70 hover:text-brand-charcoal py-1" href="hizmetler.html#3d">3D Görselleştirme</a>
+<a class="text-xs tracking-wider uppercase text-brand-charcoal/70 hover:text-brand-charcoal py-1" href="hizmetler.html#anahtar-teslim">Anahtar Teslim Uygulama</a>
+</div>
+</div>
+</div>
+<a class="text-xs uppercase tracking-arch font-medium text-brand-charcoal/80 hover:text-brand-charcoal transition-colors" href="hakkimizda.html">
+          Hakkımızda
+        </a>
+<!-- Projeler (Current Page Active State) -->
+<a class="relative text-xs uppercase tracking-arch font-semibold text-brand-charcoal flex items-center gap-2" href="projeler.html">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-bronze animate-pulse"></span>
+          Projeler
+        </a>
+<a class="inline-flex items-center justify-center px-5 py-2.5 border border-brand-charcoal/20 hover:border-brand-charcoal text-xs tracking-arch uppercase font-medium transition-all duration-300 hover:bg-brand-charcoal hover:text-brand-ivory" href="index.html#iletisim">
+          İletişim
+        </a>
+</nav>
+<!-- Mobile Menu Trigger -->
+<button aria-label="Menüyü Aç" class="md:hidden p-2 text-brand-charcoal focus:outline-none" data-purpose="mobile-menu-toggle" id="mobile-menu-btn">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+</div>
+<!-- Mobile Drawer -->
+<div class="hidden md:hidden bg-brand-ivory border-b border-brand-charcoal/10 px-6 py-6 transition-all duration-300" id="mobile-menu">
+<div class="flex flex-col gap-4">
+<a class="text-xs uppercase tracking-arch text-brand-charcoal/80 py-1" href="hizmetler.html">Hizmetlerimiz</a>
+<a class="text-xs uppercase tracking-arch text-brand-charcoal/80 py-1" href="hakkimizda.html">Hakkımızda</a>
+<a class="text-xs uppercase tracking-arch text-brand-charcoal font-semibold py-1" href="projeler.html">Projeler (Aktif)</a>
+<a class="text-xs uppercase tracking-arch text-brand-charcoal/80 py-1" href="index.html#iletisim">İletişim</a>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="pt-28 lg:pt-36">
+<!-- BEGIN: HeroPortfolioIntro -->
+<section class="relative px-6 lg:px-10 max-w-7xl mx-auto pb-16 lg:pb-20 border-b border-brand-charcoal/10 bg-grid-hairline">
+<div class="max-w-4xl">
+<!-- Architectural Coordinate Badge -->
+<div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-brand-cream border border-brand-charcoal/10 text-[11px] tracking-wideArch uppercase font-medium text-brand-charcoal/80 mb-6">
+<span class="w-2 h-2 rounded-full bg-brand-bronze"></span>
+          Küratöryel Mimari Arşiv // Projeler // REF. 41°02'49.0"N 28°59'42.0"E
+        </div>
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-7xl font-light tracking-tight text-brand-charcoal leading-[1.08] mb-6">
+          Seçkin Projeler &amp; <br class="hidden sm:inline"/>
+<span class="italic font-normal">Mimari Portfolyo</span>
+</h1>
+<p class="font-sans text-base sm:text-lg text-brand-charcoal/75 max-w-2xl font-light leading-relaxed">
+          Her hacim; doğanın ışığı, hakiki malzemenin dürüstlüğü ve kullanıcı ruhunun derinliğiyle yeniden yorumlanan benzersiz bir mimari anlatıdır.
+        </p>
+</div>
+<!-- Architectural Spec Data Row -->
+<div class="mt-12 pt-8 border-t border-brand-charcoal/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-[11px] tracking-arch uppercase text-brand-charcoal/60">
+<div>
+<span class="block text-brand-bronze font-semibold mb-1">DÖNEM</span>
+<span class="text-brand-charcoal">2023 — 2026 Seçkisi</span>
+</div>
+<div>
+<span class="block text-brand-bronze font-semibold mb-1">TİPOLOJİ</span>
+<span class="text-brand-charcoal">Rezidans &amp; Ticari</span>
+</div>
+<div>
+<span class="block text-brand-bronze font-semibold mb-1">LOKASYONLAR</span>
+<span class="text-brand-charcoal">İstanbul · Bodrum</span>
+</div>
+<div>
+<span class="block text-brand-bronze font-semibold mb-1">MİMARİ YAKLAŞIM</span>
+<span class="text-brand-charcoal">Sessiz Lüks &amp; Zamansızlık</span>
+</div>
+</div>
+</section>
+<!-- END: HeroPortfolioIntro -->
+<!-- BEGIN: FilterSection -->
+<section class="sticky top-20 z-30 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-brand-charcoal/10 py-5 px-6 lg:px-10">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+<!-- Filter Buttons Container -->
+<div class="flex flex-wrap items-center gap-2 sm:gap-3" id="filter-container">
+<button class="filter-btn active px-4 sm:px-5 py-2 text-xs tracking-arch uppercase font-medium border border-brand-charcoal/15 transition-all duration-300" data-filter="all" type="button">
+            Tümü (6)
+          </button>
+<button class="filter-btn px-4 sm:px-5 py-2 text-xs tracking-arch uppercase font-medium bg-transparent text-brand-charcoal/80 border border-brand-charcoal/15 hover:border-brand-charcoal transition-all duration-300" data-filter="konut" type="button">
+            Konut &amp; Villa (3)
+          </button>
+<button class="filter-btn px-4 sm:px-5 py-2 text-xs tracking-arch uppercase font-medium bg-transparent text-brand-charcoal/80 border border-brand-charcoal/15 hover:border-brand-charcoal transition-all duration-300" data-filter="penthouse" type="button">
+            Penthouse &amp; Loft (2)
+          </button>
+<button class="filter-btn px-4 sm:px-5 py-2 text-xs tracking-arch uppercase font-medium bg-transparent text-brand-charcoal/80 border border-brand-charcoal/15 hover:border-brand-charcoal transition-all duration-300" data-filter="ticari" type="button">
+            Ticari &amp; Ofis (2)
+          </button>
+</div>
+<!-- Right Side Counter / Notice -->
+<div class="hidden sm:flex items-center gap-2 text-xs tracking-arch text-brand-charcoal/50 uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-bronze"></span>
+          Küratöryel Gösterim
+        </div>
+</div>
+</section>
+<!-- END: FilterSection -->
+<!-- BEGIN: ProjectsGalleryGrid -->
+<section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12" id="projects-grid">
+<!-- PROJECT 1: Bosphorus Horizon Penthouse (Span 12 / Large Hero Card) -->
+<article class="project-card md:col-span-12 group cursor-pointer border border-brand-charcoal/10 bg-brand-cream/30 hover:border-brand-charcoal/30 transition-all duration-500 overflow-hidden" data-architect="Oğuzhan Nuhoğlu &amp; İç Mimari Atölyesi" data-area="620 m²" data-category="penthouse" data-category-label="Penthouse &amp; Loft" data-desc="Panoramik Boğaz ve Tarihi Yarımada silüetine karşı konumlanan bu çatı rezidansı; ham traverten, doğal keten dokular ve heykelsi asma şöminesiyle ışığın gün boyu dans ettiği sakin bir vaha yaratır. İç ve dış mekan arasındaki sınırlar tavandan tabana kavisli giyotin cam panellerle eritilmiştir." data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuBDo8fkldaLumrFwC4X-ce5CTsTcW4hwam1yHvvo--RrlKvVVo8h-3EkkWmtbn-nijNXNvzhdPBkI0N4mZnsScqvWa0pJPKS2Rfy6WNjspYKpqzmRwe8G9fgqaEvxp8l1qC_Jk1jiiJdFSZuCzHsyvcFX5MG9dqtA6VK_IIp3g_fgtjdRbRpWOL2hx2HCQVRo1XpGObHTvUf9v2YO9uE68V8Is3dRsAwUggC87lxkg" data-location="Boğazkesen, İstanbul" data-materials="Honlu Traverten, Doku Verilmiş İtalyan Sıva, Ham Keten, Yanık Bronz Şömine Gövdesi, Masif Amerikan Ceviz" data-title="Bosphorus Horizon Penthouse" data-year="2025">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+<!-- Image Area -->
+<div class="lg:col-span-8 overflow-hidden relative aspect-[16/10] bg-stone-200">
+<img alt="Ultra luxury minimalist architectural penthouse living room interior in Istanbul Bosphorus" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDo8fkldaLumrFwC4X-ce5CTsTcW4hwam1yHvvo--RrlKvVVo8h-3EkkWmtbn-nijNXNvzhdPBkI0N4mZnsScqvWa0pJPKS2Rfy6WNjspYKpqzmRwe8G9fgqaEvxp8l1qC_Jk1jiiJdFSZuCzHsyvcFX5MG9dqtA6VK_IIp3g_fgtjdRbRpWOL2hx2HCQVRo1XpGObHTvUf9v2YO9uE68V8Is3dRsAwUggC87lxkg"/>
+<div class="absolute top-4 left-4">
+<span class="bg-brand-charcoal/80 text-brand-ivory text-[10px] tracking-wideArch uppercase px-3 py-1 backdrop-blur-sm">
+                  Penthouse &amp; Loft
+                </span>
+</div>
+</div>
+<!-- Metadata & Text -->
+<div class="lg:col-span-4 p-8 lg:p-10 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-brand-charcoal/10">
+<div>
+<div class="text-[11px] tracking-wideArch uppercase text-brand-bronze font-semibold mb-2">
+                  Boğazkesen, İstanbul // 2025
+                </div>
+<h3 class="font-serif text-2xl lg:text-3xl font-light text-brand-charcoal mb-4 group-hover:text-brand-bronze transition-colors">
+                  Bosphorus Horizon Penthouse
+                </h3>
+<p class="text-sm text-brand-charcoal/75 leading-relaxed font-light mb-6">
+                  Panoramik Boğaz ve Tarihi Yarımada cephesi, heykelsi asma şömine, traverten &amp; ham keten uyumuyla minimalist lüksün en rafine tanımı.
+                </p>
+<div class="flex items-center gap-6 text-xs text-brand-charcoal/60 tracking-wider">
+<span><strong class="font-medium text-brand-charcoal">Alan:</strong> 620 m²</span>
+<span><strong class="font-medium text-brand-charcoal">Durum:</strong> Tamamlandı</span>
+</div>
+</div>
+<div class="pt-8 border-t border-brand-charcoal/10 flex items-center justify-between">
+<span class="text-xs uppercase tracking-arch font-semibold text-brand-charcoal group-hover:translate-x-1 transition-transform inline-flex items-center gap-2">
+                  Projeyi İncele
+                  <span class="text-brand-bronze">→</span>
+</span>
+<span class="text-[10px] tracking-wideArch text-brand-charcoal/40 uppercase">NO. 01</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PROJECT 2: Bodrum Taş Villa (Span 7) -->
+<article class="project-card md:col-span-7 group cursor-pointer border border-brand-charcoal/10 bg-brand-cream/30 hover:border-brand-charcoal/30 transition-all duration-500 overflow-hidden flex flex-col justify-between" data-architect="Oğuzhan Nuhoğlu &amp; Proje Ekibi" data-area="750 m²" data-category="konut" data-category-label="Konut &amp; Villa" data-desc="Yalıkavak yamaçlarında yerel doğal taş işçiliği ve çağdaş brüt beton geometrilerin harmanlandığı özel bir rezidans. Akdeniz günışığını içeri alan devasa cam cepheler ve sonsuzluk havuzuyla bütünleşen açık konsept yaşam hacmi." data-img="https://lh3.googleusercontent.com/aida/ALJJyrDeIniws98aFS8RH9T7pag9AlsK4PfIL7j8WOzeEO5IHpX4wPTSMzJrKKPXBP9hICpvjcB_zMZVXjS0vLgDKCdVJw_pS9tRWNCZbXg9tEpSr1B4cRXiCPyZg-F2-OTvPvzsg0IAuEDw76G6xEJtXGRn_zYmp0TFZftlXZTu6s0u6O8YuF2EskSh7pzLKSxMejj868NHXl_jUm34w1TRRxLfWbipqeJuIV5VHO40JqPd" data-location="Yalıkavak, Bodrum" data-materials="Yerel Bodrum Doğal Taşı, Fırçalanmış Meşe, Mikrobeton Zemin, Isı Yalıtımlı Alüminyum Doğrama, Keten Perdeler" data-title="Bodrum Taş Villa" data-year="2024">
+<div class="overflow-hidden relative aspect-[16/10] bg-stone-200">
+<img alt="High-end luxury minimalist villa interior with natural stone wall" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida/ALJJyrDeIniws98aFS8RH9T7pag9AlsK4PfIL7j8WOzeEO5IHpX4wPTSMzJrKKPXBP9hICpvjcB_zMZVXjS0vLgDKCdVJw_pS9tRWNCZbXg9tEpSr1B4cRXiCPyZg-F2-OTvPvzsg0IAuEDw76G6xEJtXGRn_zYmp0TFZftlXZTu6s0u6O8YuF2EskSh7pzLKSxMejj868NHXl_jUm34w1TRRxLfWbipqeJuIV5VHO40JqPd"/>
+<div class="absolute top-4 left-4">
+<span class="bg-brand-charcoal/80 text-brand-ivory text-[10px] tracking-wideArch uppercase px-3 py-1 backdrop-blur-sm">
+                Konut &amp; Villa
+              </span>
+</div>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<div class="text-[11px] tracking-wideArch uppercase text-brand-bronze font-semibold mb-2">
+                Yalıkavak, Bodrum // 2024
+              </div>
+<h3 class="font-serif text-2xl lg:text-3xl font-light text-brand-charcoal mb-3 group-hover:text-brand-bronze transition-colors">
+                Bodrum Taş Villa
+              </h3>
+<p class="text-sm text-brand-charcoal/75 leading-relaxed font-light mb-6">
+                Doğal taş yığma duvarlar, sonsuzluk havuzuna açılan giyotin camlar ve Ege günışığı sirkülasyonu ile toprağa bağlı bir mimari duruş.
+              </p>
+</div>
+<div class="pt-6 border-t border-brand-charcoal/10 flex items-center justify-between">
+<span class="text-xs uppercase tracking-arch font-semibold text-brand-charcoal group-hover:translate-x-1 transition-transform inline-flex items-center gap-2">
+                Projeyi İncele <span class="text-brand-bronze">→</span>
+</span>
+<span class="text-[10px] tracking-wideArch text-brand-charcoal/40 uppercase">NO. 02 // 750 m²</span>
+</div>
+</div>
+</article>
+<!-- PROJECT 3: Bebek Yalı Dairesi (Span 5) -->
+<article class="project-card md:col-span-5 group cursor-pointer border border-brand-charcoal/10 bg-brand-cream/30 hover:border-brand-charcoal/30 transition-all duration-500 overflow-hidden flex flex-col justify-between" data-architect="Oğuzhan Nuhoğlu &amp; Tarihi Yapı Konservasyon Ekibi" data-area="450 m²" data-category="konut" data-category-label="Konut &amp; Villa" data-desc="Tarihi Boğaziçi sahil şeridinde yer alan 19. yüzyıl tescilli yalı dairesi, özgün ahşap kaset tavanları ve taş kemerleri korunarak çağdaş bir sessiz lüks mabedine dönüştürülmüştür." data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuCbyNCqyrkycOzjE_B4VkfCYjW7kTt-juR3S0KW6j7a-NpwZV5uWmXDgvdPb8ZdokexPqja1ZhRq-r5Fj8faFO-invDxbb1rC1mqrU9L_7R_ziHxwD7qUHVplzI7IsI5lfluZbHgLoZLgSCKKIgPOmkGQ2KGGaVOm607Q9cqT_mrhUiqg6MZzvzt7xJDCAVYzF6_udGaAW5wu4ksrBcs3MK5dfuRp9MnRupJ9yYg5o" data-location="Bebek Sahili, İstanbul" data-materials="Restorasyon Meşe Tavan Kasetleri, Carrara Mermer Şömine, Balıksırtı Masif Parke, Patinalı Pirinç Armatürler" data-title="Bebek Yalı Dairesi" data-year="2024">
+<div class="overflow-hidden relative aspect-[4/3] bg-stone-200">
+<img alt="Ultra luxury historic waterfront Bosphorus yali apartment interior in Bebek Istanbul" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbyNCqyrkycOzjE_B4VkfCYjW7kTt-juR3S0KW6j7a-NpwZV5uWmXDgvdPb8ZdokexPqja1ZhRq-r5Fj8faFO-invDxbb1rC1mqrU9L_7R_ziHxwD7qUHVplzI7IsI5lfluZbHgLoZLgSCKKIgPOmkGQ2KGGaVOm607Q9cqT_mrhUiqg6MZzvzt7xJDCAVYzF6_udGaAW5wu4ksrBcs3MK5dfuRp9MnRupJ9yYg5o"/>
+<div class="absolute top-4 left-4">
+<span class="bg-brand-charcoal/80 text-brand-ivory text-[10px] tracking-wideArch uppercase px-3 py-1 backdrop-blur-sm">
+                Konut &amp; Villa
+              </span>
+</div>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<div class="text-[11px] tracking-wideArch uppercase text-brand-bronze font-semibold mb-2">
+                Bebek Sahili, İstanbul // 2024
+              </div>
+<h3 class="font-serif text-2xl lg:text-3xl font-light text-brand-charcoal mb-3 group-hover:text-brand-bronze transition-colors">
+                Bebek Yalı Dairesi
+              </h3>
+<p class="text-sm text-brand-charcoal/75 leading-relaxed font-light mb-6">
+                19. yüzyıl tavan kasetleri ve kemerleri, masif balıksırtı meşe parke ve mermer şömine restorasyonu ile tarihe saygılı modernizm.
+              </p>
+</div>
+<div class="pt-6 border-t border-brand-charcoal/10 flex items-center justify-between">
+<span class="text-xs uppercase tracking-arch font-semibold text-brand-charcoal group-hover:translate-x-1 transition-transform inline-flex items-center gap-2">
+                Projeyi İncele <span class="text-brand-bronze">→</span>
+</span>
+<span class="text-[10px] tracking-wideArch text-brand-charcoal/40 uppercase">NO. 03 // 450 m²</span>
+</div>
+</div>
+</article>
+<!-- PROJECT 4: Levent Executive Headquarters (Span 7) -->
+<article class="project-card md:col-span-7 group cursor-pointer border border-brand-charcoal/10 bg-brand-cream/30 hover:border-brand-charcoal/30 transition-all duration-500 overflow-hidden flex flex-col justify-between" data-architect="Oğuzhan Nuhoğlu Proje Grubu" data-area="1.200 m²" data-category="ticari" data-category-label="Ticari &amp; Ofis" data-desc="Finans merkezinin zirvesinde tasarlanan üst düzey yönetim ofisi; kurumsal kimliğin prestijini akustik ceviz paneller, heykelsi traverten masa ve sıcak galeri aydınlatmasıyla temsil eder." data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuCtH-d_5RJQKUkKttVBfxq8kTsDa00EEqcICR6kFRBxQwxSH0t8nH6mpPl4RA9EMBPH5Ekb7hhTToFl8XrlEpZpLIXDGp4HBpzdn54o6lGyM1_o5L49FkV47xtulEm7jzRLzTLeCLEvHx-Vyu7GOgG8i3WiHO39dxKK3CDWvAKnO2DOcD0UIRQY9_RUgNPy9Ablo75SB809aRjZd649sTX3mM0BMN8ZRT5OwvC0lxI" data-location="Levent, İstanbul" data-materials="Akustik Oluklu Ceviz Ahşap, Monolitik Traverten, Doğal Nubuk Deri, Mat Pirinç Profiller" data-title="Levent Executive Headquarters" data-year="2025">
+<div class="overflow-hidden relative aspect-[16/10] bg-stone-200">
+<img alt="High-end luxury modern executive corporate headquarters office in Levent Istanbul" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtH-d_5RJQKUkKttVBfxq8kTsDa00EEqcICR6kFRBxQwxSH0t8nH6mpPl4RA9EMBPH5Ekb7hhTToFl8XrlEpZpLIXDGp4HBpzdn54o6lGyM1_o5L49FkV47xtulEm7jzRLzTLeCLEvHx-Vyu7GOgG8i3WiHO39dxKK3CDWvAKnO2DOcD0UIRQY9_RUgNPy9Ablo75SB809aRjZd649sTX3mM0BMN8ZRT5OwvC0lxI"/>
+<div class="absolute top-4 left-4">
+<span class="bg-brand-charcoal/80 text-brand-ivory text-[10px] tracking-wideArch uppercase px-3 py-1 backdrop-blur-sm">
+                Ticari &amp; Ofis
+              </span>
+</div>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<div class="text-[11px] tracking-wideArch uppercase text-brand-bronze font-semibold mb-2">
+                Levent, İstanbul // 2025
+              </div>
+<h3 class="font-serif text-2xl lg:text-3xl font-light text-brand-charcoal mb-3 group-hover:text-brand-bronze transition-colors">
+                Levent Executive Headquarters
+              </h3>
+<p class="text-sm text-brand-charcoal/75 leading-relaxed font-light mb-6">
+                Akustik oluklu ceviz paneller, monolitik traverten toplantı masası ve panoramik şehir silüetiyle üst düzey kurumsal deneyim.
+              </p>
+</div>
+<div class="pt-6 border-t border-brand-charcoal/10 flex items-center justify-between">
+<span class="text-xs uppercase tracking-arch font-semibold text-brand-charcoal group-hover:translate-x-1 transition-transform inline-flex items-center gap-2">
+                Projeyi İncele <span class="text-brand-bronze">→</span>
+</span>
+<span class="text-[10px] tracking-wideArch text-brand-charcoal/40 uppercase">NO. 04 // 1.200 m²</span>
+</div>
+</div>
+</article>
+<!-- PROJECT 5: Nişantaşı Concept Store (Span 5) -->
+<article class="project-card md:col-span-5 group cursor-pointer border border-brand-charcoal/10 bg-brand-cream/30 hover:border-brand-charcoal/30 transition-all duration-500 overflow-hidden flex flex-col justify-between" data-architect="Oğuzhan Nuhoğlu Mimarlık" data-area="280 m²" data-category="ticari" data-category-label="Ticari &amp; Ofis" data-desc="Abdi İpekçi Caddesi'nde konumlanan monokromatik butik mağaza; heykelsi el sıvası nişleri, ham kireçtaşı kaideleri ve sıcak mimari ışık kanallarıyla ziyaretçiyi içine çeken bir galeri deneyimi sunar." data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuA1zEX_ZXE45slEdOPJURemip-hSD9e9smWkwbBSPV0CgmizzD3CGV69SY3pSWqmVA65bG-CUx5yNo9Wk-zWPGpw9QyOfczvFElPoLqSsY7iBIxKgrJM2wOXP0Nq_R2A8jBuTlRyLXi854otX5i7LgKLkAd2yL3bOuxzSwq2ZDjWDMmM94eUsgEhgmbatXIisQ-CI1DvfBGDZGWXe4yX4Ape_KrbKk0IotDcIu7Zvs" data-location="Abdi İpekçi, Nişantaşı" data-materials="Ham Kireçtaşı Kaideler, Organik Kireç Sıva Nişler, Eskitme Pirinç Askı Sistemleri, Terrazzo Zemin" data-title="Nişantaşı Concept Store" data-year="2025">
+<div class="overflow-hidden relative aspect-[4/5] bg-stone-200">
+<img alt="Minimalist luxury concept store interior design in Nisantasi Istanbul" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1zEX_ZXE45slEdOPJURemip-hSD9e9smWkwbBSPV0CgmizzD3CGV69SY3pSWqmVA65bG-CUx5yNo9Wk-zWPGpw9QyOfczvFElPoLqSsY7iBIxKgrJM2wOXP0Nq_R2A8jBuTlRyLXi854otX5i7LgKLkAd2yL3bOuxzSwq2ZDjWDMmM94eUsgEhgmbatXIisQ-CI1DvfBGDZGWXe4yX4Ape_KrbKk0IotDcIu7Zvs"/>
+<div class="absolute top-4 left-4">
+<span class="bg-brand-charcoal/80 text-brand-ivory text-[10px] tracking-wideArch uppercase px-3 py-1 backdrop-blur-sm">
+                Ticari &amp; Ofis
+              </span>
+</div>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<div class="text-[11px] tracking-wideArch uppercase text-brand-bronze font-semibold mb-2">
+                Abdi İpekçi, Nişantaşı // 2025
+              </div>
+<h3 class="font-serif text-2xl lg:text-3xl font-light text-brand-charcoal mb-3 group-hover:text-brand-bronze transition-colors">
+                Nişantaşı Concept Store
+              </h3>
+<p class="text-sm text-brand-charcoal/75 leading-relaxed font-light mb-6">
+                Heykelsi kireç sıvalı nişler, ham monolitik kireçtaşı podyumlar ve mimari sıcak gömme aydınlatma ile yüksek moda mekanı.
+              </p>
+</div>
+<div class="pt-6 border-t border-brand-charcoal/10 flex items-center justify-between">
+<span class="text-xs uppercase tracking-arch font-semibold text-brand-charcoal group-hover:translate-x-1 transition-transform inline-flex items-center gap-2">
+                Projeyi İncele <span class="text-brand-bronze">→</span>
+</span>
+<span class="text-[10px] tracking-wideArch text-brand-charcoal/40 uppercase">NO. 05 // 280 m²</span>
+</div>
+</div>
+</article>
+<!-- PROJECT 6: Kandilli Minimal Loft (Span 12) -->
+<article class="project-card md:col-span-12 group cursor-pointer border border-brand-charcoal/10 bg-brand-cream/30 hover:border-brand-charcoal/30 transition-all duration-500 overflow-hidden" data-architect="Oğuzhan Nuhoğlu &amp; Ortakları" data-area="380 m²" data-category="penthouse" data-category-label="Penthouse &amp; Loft" data-desc="Tarihi Kandilli korusunun eteklerinde yer alan loft &amp; mimari atölye; ham meşe çalışma masaları, çift katlı galeri boşluğu ve strüktürel kütüphanesiyle yaratıcı üretkenlik ve dingin yaşamı bir araya getirir." data-img="https://lh3.googleusercontent.com/aida/ALJJyrCqWGIyRypz53ozf1I7yXx44Syvh-cQxUP_go70JOGHp_no10Aekuflw87NShBL0ymx2WyLOIf_S7PWIOqLIyxPsqQrDhpEglYNVzbQE1kGJbTSI68j-GfYBkg3lWvdL1D1Ebmlz1f8pP4JDLmct6ZRo1t_suJoVzJgMVLZyA4nty447FYXYSqfb20O4IghpqoTgF5SxdmU46BYBauXer6GHI3rKIDLlE06pHfgw-fC" data-location="Kandilli, İstanbul" data-materials="Geri Dönüştürülmüş Meşe Kirişler, Doğal Kireçtaşı Raf Sistemleri, Çelik Profil Doğramalar, Pirinç Lambader Detayları" data-title="Kandilli Minimal Loft" data-year="2023">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+<!-- Metadata & Text (Left on Desktop for Layout Rhythm) -->
+<div class="lg:col-span-4 p-8 lg:p-10 flex flex-col justify-between order-2 lg:order-1 border-t lg:border-t-0 lg:border-r border-brand-charcoal/10">
+<div>
+<div class="text-[11px] tracking-wideArch uppercase text-brand-bronze font-semibold mb-2">
+                  Kandilli, İstanbul // 2023
+                </div>
+<h3 class="font-serif text-2xl lg:text-3xl font-light text-brand-charcoal mb-4 group-hover:text-brand-bronze transition-colors">
+                  Kandilli Minimal Loft
+                </h3>
+<p class="text-sm text-brand-charcoal/75 leading-relaxed font-light mb-6">
+                  Ham meşe çizim ve yaşam alanları, çift kat galeri boşluğu ve heykelsi mimari maket kütüphanesi ile zanaat ve formun buluşması.
+                </p>
+<div class="flex items-center gap-6 text-xs text-brand-charcoal/60 tracking-wider">
+<span><strong class="font-medium text-brand-charcoal">Alan:</strong> 380 m²</span>
+<span><strong class="font-medium text-brand-charcoal">Durum:</strong> Yaşayan Alan</span>
+</div>
+</div>
+<div class="pt-8 border-t border-brand-charcoal/10 flex items-center justify-between">
+<span class="text-xs uppercase tracking-arch font-semibold text-brand-charcoal group-hover:translate-x-1 transition-transform inline-flex items-center gap-2">
+                  Projeyi İncele <span class="text-brand-bronze">→</span>
+</span>
+<span class="text-[10px] tracking-wideArch text-brand-charcoal/40 uppercase">NO. 06</span>
+</div>
+</div>
+<!-- Image Area (Right) -->
+<div class="lg:col-span-8 overflow-hidden relative aspect-[16/10] bg-stone-200 order-1 lg:order-2">
+<img alt="Luxury architectural studio atelier workspace interior with blueprints and architectural models" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida/ALJJyrCqWGIyRypz53ozf1I7yXx44Syvh-cQxUP_go70JOGHp_no10Aekuflw87NShBL0ymx2WyLOIf_S7PWIOqLIyxPsqQrDhpEglYNVzbQE1kGJbTSI68j-GfYBkg3lWvdL1D1Ebmlz1f8pP4JDLmct6ZRo1t_suJoVzJgMVLZyA4nty447FYXYSqfb20O4IghpqoTgF5SxdmU46BYBauXer6GHI3rKIDLlE06pHfgw-fC"/>
+<div class="absolute top-4 right-4">
+<span class="bg-brand-charcoal/80 text-brand-ivory text-[10px] tracking-wideArch uppercase px-3 py-1 backdrop-blur-sm">
+                  Penthouse &amp; Loft
+                </span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- END: ProjectsGalleryGrid -->
+<!-- BEGIN: ManifestoBand -->
+<section class="border-t border-b border-brand-charcoal/10 bg-brand-cream/60 py-20 px-6 lg:px-10">
+<div class="max-w-5xl mx-auto text-center">
+<span class="font-serif italic text-3xl sm:text-4xl lg:text-5xl font-light text-brand-bronze mb-4 block">
+          “Per Aspera Ad Astra”
+        </span>
+<h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-brand-charcoal mb-4">
+          Zorluklardan Yıldızlara
+        </h2>
+<p class="font-sans text-sm sm:text-base text-brand-charcoal/70 max-w-2xl mx-auto leading-relaxed font-light mb-10">
+          Tutkuyla örülen mimari detayların zamana meydan okuyan güzelliğe ve dingin bir yaşama dönüşümü.
+        </p>
+<a class="inline-flex items-center gap-3 px-8 py-4 bg-brand-charcoal text-brand-ivory hover:bg-brand-bronze text-xs tracking-wideArch uppercase font-medium transition-all duration-300 shadow-sm" href="index.html#iletisim">
+          Yeni Bir Proje Başlatın
+          <span>→</span>
+</a>
+</div>
+</section>
+<!-- END: ManifestoBand -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: ProjectDetailModal -->
+<div aria-hidden="true" aria-modal="true" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 lg:p-10 modal-backdrop bg-brand-charcoal/80 transition-opacity duration-300 opacity-0" data-purpose="project-detail-lightbox" id="project-modal" role="dialog">
+<div class="bg-brand-ivory max-w-5xl w-full max-h-[92vh] overflow-y-auto border border-brand-charcoal/20 shadow-2xl relative transform transition-transform duration-300 scale-95" id="modal-card">
+<!-- Modal Close Button -->
+<button aria-label="Kapat" class="absolute top-5 right-5 z-20 w-11 h-11 bg-brand-ivory/90 hover:bg-brand-charcoal hover:text-brand-ivory text-brand-charcoal flex items-center justify-center border border-brand-charcoal/10 transition-colors" id="modal-close-btn" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<!-- Modal Content Wrapper -->
+<div class="grid grid-cols-1 lg:grid-cols-12">
+<!-- High-res Image Preview -->
+<div class="lg:col-span-7 bg-stone-200 relative aspect-[16/11] lg:aspect-auto min-h-[300px]">
+<img alt="Proje Görseli" class="w-full h-full object-cover" id="modal-image" src=""/>
+<div class="absolute bottom-4 left-4 bg-brand-charcoal/80 text-brand-ivory text-[10px] tracking-wideArch uppercase px-3 py-1 backdrop-blur-sm" id="modal-category-badge">
+            Kategori
+          </div>
+</div>
+<!-- Project Editorial Details -->
+<div class="lg:col-span-5 p-8 lg:p-10 flex flex-col justify-between">
+<div>
+<div class="text-[11px] tracking-wideArch uppercase text-brand-bronze font-semibold mb-2" id="modal-meta-location">
+              Lokasyon &amp; Yıl
+            </div>
+<h2 class="font-serif text-3xl font-light text-brand-charcoal mb-4" id="modal-title">
+              Proje Başlığı
+            </h2>
+<div class="w-12 h-px bg-brand-bronze mb-6"></div>
+<div class="mb-6">
+<h4 class="text-xs uppercase tracking-arch font-semibold text-brand-charcoal mb-2">Konsept &amp; Tasarım Yaklaşımı</h4>
+<p class="text-sm text-brand-charcoal/80 leading-relaxed font-light" id="modal-desc">
+                Proje açıklaması buraya yüklenecektir.
+              </p>
+</div>
+<div class="mb-6">
+<h4 class="text-xs uppercase tracking-arch font-semibold text-brand-charcoal mb-2">Kullanılan Ana Materyaller</h4>
+<p class="text-xs text-brand-charcoal/70 leading-relaxed font-light italic" id="modal-materials">
+                Traverten, Meşe, Masif Taş...
+              </p>
+</div>
+</div>
+<!-- Technical Specs Footer -->
+<div class="pt-6 border-t border-brand-charcoal/10 grid grid-cols-2 gap-4 text-[11px] tracking-wider uppercase text-brand-charcoal/60">
+<div>
+<span class="block text-brand-charcoal font-medium">Toplam Alan</span>
+<span class="text-brand-bronze font-semibold" id="modal-area">0 m²</span>
+</div>
+<div>
+<span class="block text-brand-charcoal font-medium">Tamamlanma</span>
+<span class="text-brand-bronze font-semibold" id="modal-year">2025</span>
+</div>
+<div class="col-span-2 pt-2 border-t border-brand-charcoal/5">
+<span class="block text-brand-charcoal font-medium">Mimari Ekip</span>
+<span class="text-brand-charcoal/80" id="modal-architect">Oğuzhan Nuhoğlu Studio</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- END: ProjectDetailModal -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-brand-charcoal text-brand-ivory border-t border-brand-charcoal/20">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
+<!-- Brand Info -->
+<div class="md:col-span-5">
+<div class="flex items-center gap-3 mb-6">
+<img alt="Oğuzhan Nuhoğlu Logo" class="w-10 h-10 rounded-full object-cover filter brightness-90 border border-brand-ivory/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIYAL_cG_peFnqIUxkGTUTPt53_cKXE9c4FWALAm5wxfZcd4A4dFcxTNfYHv0ZKnatT_Ve7pNilVePIqq_7WH1Ge4u3AFJmlSQ5qBCYLs4iQ-NsKnYeDW8p9WjXVREFPFSjE5X8ChYZ52dRxGegDTV0k6AQ4MxAR5WYehfmS6V-VLYRZH14qVa0-xHK6JOSuddZRIsEV6pCK_W_vjPBmmzDWEwBNLfRTUFI2tV2Xyqd5jKwg_Dypyd"/>
+<span class="font-serif text-lg tracking-[0.16em] uppercase font-medium text-brand-ivory">
+              Oğuzhan Nuhoğlu
+            </span>
+</div>
+<p class="text-xs sm:text-sm text-brand-ivory/65 leading-relaxed font-light max-w-sm mb-6">
+            Mimari hacimlerde zamansız bir denge, organik dokuların zarafeti ve sessiz lüks felsefesiyle şekillenen mekansal anlatılar.
+          </p>
+<div class="text-[10px] tracking-wideArch uppercase text-brand-bronze font-mono">
+            REF. 41°02'49.0"N 28°59'42.0"E // ATELIER ISTANBUL
+          </div>
+</div>
+<!-- Navigation Links -->
+<div class="md:col-span-3">
+<h4 class="text-xs uppercase tracking-arch font-semibold text-brand-bronze mb-5">
+            Navigasyon
+          </h4>
+<ul class="flex flex-col gap-3 text-xs tracking-wider uppercase text-brand-ivory/70">
+<li><a class="hover:text-brand-ivory transition-colors" href="index.html">Ana Sayfa</a></li>
+<li><a class="text-brand-ivory font-semibold" href="projeler.html">Projeler (Portfolyo)</a></li>
+<li><a class="hover:text-brand-ivory transition-colors" href="hizmetler.html">Hizmetlerimiz</a></li>
+<li><a class="hover:text-brand-ivory transition-colors" href="hakkimizda.html">Hakkımızda &amp; Felsefe</a></li>
+<li><a class="hover:text-brand-ivory transition-colors" href="index.html#iletisim">İletişim</a></li>
+</ul>
+</div>
+<!-- Studio Contact Info -->
+<div class="md:col-span-4">
+<h4 class="text-xs uppercase tracking-arch font-semibold text-brand-bronze mb-5">
+            Stüdyolar &amp; İletişim
+          </h4>
+<div class="text-xs text-brand-ivory/70 flex flex-col gap-4 font-light">
+<div>
+<strong class="block text-brand-ivory font-medium tracking-wider uppercase mb-1">Nişantaşı Atelier:</strong>
+              Abdi İpekçi Cad. No: 42/6 Nişantaşı, İstanbul
+            </div>
+<div>
+<strong class="block text-brand-ivory font-medium tracking-wider uppercase mb-1">Bodrum Stüdyo:</strong>
+              Yalıkavak Marina Çevresi, Bodrum / Muğla
+            </div>
+<div class="pt-2">
+<a class="hover:text-brand-bronze transition-colors block" href="mailto:info@oguzhannuhoglu.com">
+                info@oguzhannuhoglu.com
+              </a>
+<a class="hover:text-brand-bronze transition-colors block mt-1" href="tel:+902120000000">
+                +90 (212) 000 00 00
+              </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Copyright Bottom Bar -->
+<div class="mt-16 pt-8 border-t border-brand-ivory/10 flex flex-col sm:flex-row items-center justify-between text-[11px] tracking-wideArch uppercase text-brand-ivory/50 gap-4">
+<div>
+          © 2026 Oğuzhan Nuhoğlu İç Mimarlık. Tüm Hakları Saklıdır.
+        </div>
+<div class="flex items-center gap-6">
+<a class="hover:text-brand-ivory transition-colors" href="#">Gizlilik Politikası</a>
+<a class="hover:text-brand-ivory transition-colors" href="#">Yasal Uyarı</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="mobile-menu-handling">
+    // Toggle mobile menu drawer
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+<script data-purpose="portfolio-filtering">
+    // Interactive category filter logic
+    const filterButtons = document.querySelectorAll('#filter-container .filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Toggle active style on buttons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.classList.remove('bg-brand-charcoal', 'text-white');
+        });
+        button.classList.add('active');
+
+        const selectedFilter = button.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (selectedFilter === 'all' || cardCategory === selectedFilter) {
+            card.classList.remove('hidden');
+            // Re-apply display block/grid
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+<script data-purpose="project-detail-lightbox">
+    // Project detail modal popup
+    const modal = document.getElementById('project-modal');
+    const modalCard = document.getElementById('modal-card');
+    const closeBtn = document.getElementById('modal-close-btn');
+
+    const modalImg = document.getElementById('modal-image');
+    const modalCategory = document.getElementById('modal-category-badge');
+    const modalTitle = document.getElementById('modal-title');
+    const modalLocation = document.getElementById('modal-meta-location');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalMaterials = document.getElementById('modal-materials');
+    const modalArea = document.getElementById('modal-area');
+    const modalYear = document.getElementById('modal-year');
+    const modalArchitect = document.getElementById('modal-architect');
+
+    function openModal(data) {
+      modalImg.src = data.img;
+      modalImg.alt = data.title;
+      modalCategory.textContent = data.categoryLabel;
+      modalTitle.textContent = data.title;
+      modalLocation.textContent = `${data.location} // ${data.year}`;
+      modalDesc.textContent = data.desc;
+      modalMaterials.textContent = data.materials;
+      modalArea.textContent = data.area;
+      modalYear.textContent = data.year;
+      modalArchitect.textContent = data.architect;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.classList.add('modal-open');
+
+      // Animate entry
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+        modalCard.classList.remove('scale-95');
+        modalCard.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeModal() {
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.classList.remove('modal-open');
+        modalImg.src = '';
+      }, 300);
+    }
+
+    // Attach click listeners to cards
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const projectData = {
+          title: card.dataset.title,
+          categoryLabel: card.dataset.categoryLabel,
+          location: card.dataset.location,
+          area: card.dataset.area,
+          year: card.dataset.year,
+          desc: card.dataset.desc,
+          materials: card.dataset.materials,
+          architect: card.dataset.architect,
+          img: card.dataset.img
+        };
+        openModal(projectData);
+      });
+    });
+
+    // Close on button click
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeModal();
+    });
+
+    // Close on backdrop click outside modal card
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  </script>
+<!-- END: InteractiveScripts -->
+</body></html>

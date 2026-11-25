@@ -1,0 +1,22 @@
+<%# Proje kartı. Gerekli: project. Boş alanlar için uydurma içerik gösterilmez. %>
+<% const meta = [project.location, project.year].filter(Boolean).join(' • '); %>
+<article class="project-card group relative overflow-hidden rounded-2xl border border-charcoal/10 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-charcoal/25 hover:shadow-xl" data-category="<%= project.category %>">
+  <a href="/projeler/<%= project.slug %>" class="block focus-visible:outline-offset-[-3px]" aria-label="<%= project.title %> projesini incele">
+    <div class="parallax-frame reveal relative aspect-[4/5] overflow-hidden bg-ivory sm:aspect-[4/3] lg:aspect-[4/5]" data-reveal="clip">
+      <% if (project.image_url) { %>
+        <div class="parallax-media h-full w-full" data-parallax-media="16">
+          <img src="<%= project.image_url %>" alt="<%= project.title %><%= project.location ? ' - ' + project.location : '' %>" loading="lazy" decoding="async" width="800" height="1000" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105">
+        </div>
+      <% } %>
+      <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent"></div>
+      <% if (project.category_label) { %>
+        <span class="absolute left-4 top-4 bg-charcoal/80 px-3 py-1 text-[10px] uppercase tracking-wide-arch text-bone backdrop-blur-sm"><%= project.category_label %></span>
+      <% } %>
+      <div class="absolute inset-x-5 bottom-5 text-bone transition-transform duration-500 group-hover:-translate-y-1">
+        <% if (meta) { %><p class="mb-1 text-[11px] font-medium uppercase tracking-widest text-ivory/80"><%= meta %></p><% } %>
+        <h3 class="font-serif text-2xl font-normal leading-tight"><%= project.title %></h3>
+        <% if (project.area) { %><p class="mt-1 text-xs font-light text-ivory/80"><%= project.area %></p><% } %>
+      </div>
+    </div>
+  </a>
+</article>

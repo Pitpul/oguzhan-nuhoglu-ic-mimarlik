@@ -1,0 +1,36 @@
+<%- include('../partials/head') %>
+<body>
+<%- include('../partials/navbar') %>
+
+<main id="icerik">
+  <%- include('../partials/page-hero', {
+    eyebrow: 'Teklif & Keşif Talebi',
+    title: 'Hayalinizdeki Mekânı',
+    accent: 'Birlikte İnşa Edelim',
+    lead: 'Projeniz, danışmanlık talebiniz veya keşif randevunuz için bizimle iletişime geçebilirsiniz.'
+  }) %>
+
+  <section class="section-y bg-ivory">
+    <div class="container-x grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="space-y-8 lg:col-span-5" data-stagger="75">
+        <% site.offices.forEach((o) => { %>
+          <address class="reveal not-italic">
+            <p class="eyebrow mb-2"><%= o.name %></p>
+            <p class="font-serif text-2xl font-light leading-snug"><%= o.address %></p>
+          </address>
+        <% }) %>
+        <div class="reveal space-y-2 border-t border-charcoal/10 pt-8 text-sm text-muted">
+          <p><span class="mr-2 text-xs font-medium uppercase tracking-wider text-charcoal">E-posta</span>
+            <a href="mailto:<%= site.email %>" class="hover:text-bronze-dark"><%= site.email %></a></p>
+          <p><span class="mr-2 text-xs font-medium uppercase tracking-wider text-charcoal">Telefon</span>
+            <a href="tel:<%= site.phoneHref %>" class="hover:text-bronze-dark"><%= site.phone %></a></p>
+        </div>
+      </div>
+      <div class="reveal lg:col-span-7" id="iletisim">
+        <%- include('../partials/contact-form') %>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer', { scripts: ['/js/contact.js'] }) %>

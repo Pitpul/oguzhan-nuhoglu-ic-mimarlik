@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    background-color: theme('colors.ivory');
+    overflow-x: clip;
+  }
+  body {
+    @apply flex min-h-screen flex-col bg-ivory font-sans text-charcoal antialiased;
+  }
+  main {
+    flex: 1 0 auto;
+    overflow-x: clip;
+  }
+  :focus-visible {
+    outline: 2px solid theme('colors.bronze.DEFAULT');
+    outline-offset: 3px;
+  }
+  ::selection {
+    background-color: theme('colors.bronze.DEFAULT');
+    color: theme('colors.bone');
+  }
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+  .section-y {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-wide-arch text-bronze-dark;
+  }
+  .display {
+    @apply font-serif font-light leading-[1.1] tracking-tight text-charcoal;
+  }
+
+  /* Butonlar */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-xs font-semibold uppercase tracking-arch transition-all duration-300;
+  }
+  .btn-dark {
+    @apply bg-charcoal text-bone hover:bg-bronze;
+  }
+  .btn-outline {
+    @apply border border-charcoal/30 text-charcoal hover:border-charcoal hover:bg-white/60;
+  }
+  .btn-sm {
+    @apply px-5 py-2.5 text-[11px];
+  }
+  .btn-danger {
+    @apply border border-red-800/30 text-red-800 hover:bg-red-800 hover:text-white;
+  }
+  .link-arrow {
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-arch text-charcoal transition-colors hover:text-bronze-dark;
+  }
+
+  /* Form elemanları */
+  .field {
+    @apply w-full rounded-xl border border-charcoal/15 bg-bone px-4 py-3 text-sm text-charcoal transition-colors placeholder:text-muted/60 focus:border-bronze focus:outline-none;
+  }
+  .field[aria-invalid='true'] {
+    @apply border-red-700;
+  }
+  .label {
+    @apply mb-2 block text-[11px] font-medium uppercase tracking-wider text-muted;
+  }
+  .field-error {
+    @apply mt-1.5 text-xs text-red-800;
+  }
+
+  /* Header */
+  .site-header {
+    @apply fixed inset-x-0 top-0 z-50 border-b border-charcoal/10 bg-ivory/85 backdrop-blur-md transition-shadow duration-300;
+  }
+  .site-header.is-scrolled {
+    @apply bg-ivory/95 shadow-[0_10px_30px_-15px_rgba(26,25,23,0.25)];
+  }
+  .nav-link {
+    @apply relative py-2 text-xs font-medium uppercase tracking-arch text-charcoal transition-colors hover:text-bronze-dark;
+  }
+  .nav-link[aria-current='page'] {
+    @apply font-semibold text-bronze-dark;
+  }
+  .nav-link[aria-current='page']::after {
+    content: '';
+    @apply absolute inset-x-0 -bottom-0.5 h-px bg-bronze;
+  }
+  .mobile-drawer {
+    @apply pointer-events-none invisible fixed inset-0 z-40 flex translate-x-full flex-col justify-between overflow-y-auto bg-bone px-6 pb-10 pt-28 transition-[transform,visibility] duration-300 lg:hidden;
+  }
+  .mobile-drawer.is-open {
+    @apply pointer-events-auto visible translate-x-0;
+  }
+
+  /* Kartlar & yüzeyler */
+  .grid-blueprint {
+    background-size: 56px 56px;
+    background-image: linear-gradient(to right, rgba(26, 25, 23, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(26, 25, 23, 0.04) 1px, transparent 1px);
+  }
+  .filter-btn {
+    @apply border border-charcoal/15 px-4 py-2 text-[11px] font-medium uppercase tracking-arch text-charcoal/80 transition-all duration-300 hover:border-charcoal sm:px-5;
+  }
+  .filter-btn[aria-pressed='true'] {
+    @apply border-charcoal bg-charcoal text-bone;
+  }
+
+  /* SSS akordeonu */
+  .faq-panel {
+    @apply grid grid-rows-[0fr] transition-all duration-300;
+  }
+  .faq-panel[data-open='true'] {
+    @apply grid-rows-[1fr];
+  }
+
+  /* ==========================================================================
+     ORTAK ANİMASYON SİSTEMİ (Progressive Enhancement: JS yoksa her şey görünür)
+     ========================================================================== */
+  html.js-ready .reveal {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      clip-path 0.92s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  html.js-ready .reveal[data-reveal='title'] {
+    transform: translate3d(0, 24px, 0) scale(0.988);
+  }
+
+  html.js-ready .reveal[data-reveal='scale'] {
+    transform: translate3d(0, 16px, 0) scale(0.978);
+  }
+
+  html.js-ready .reveal[data-reveal='clip'] {
+    clip-path: inset(4.5% 2% 4.5% 2% round 0.35rem);
+    transform: translate3d(0, 12px, 0);
+  }
+
+  /* KVKK ve metin ağırlıklı sayfalar için gecikmesiz, okunabilirlik odaklı hafif geçiş */
+  html.js-ready .reveal[data-reveal='gentle'] {
+    transform: translate3d(0, 8px, 0);
+    transition-duration: 0.45s;
+  }
+
+  html.js-ready .reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  html.js-ready .reveal[data-reveal='clip'].is-visible {
+    clip-path: inset(0% 0% 0% 0% round 0rem);
+  }
+
+  @media (max-width: 767px) {
+    html.js-ready .reveal {
+      transform: translate3d(0, 12px, 0);
+      transition-duration: 0.62s;
+    }
+    html.js-ready .reveal[data-reveal='title'],
+    html.js-ready .reveal[data-reveal='scale'] {
+      transform: translate3d(0, 12px, 0) scale(0.992);
+    }
+    html.js-ready .reveal[data-reveal='clip'] {
+      clip-path: inset(2.5% 1% 2.5% 1% round 0.25rem);
+      transform: translate3d(0, 8px, 0);
+    }
+  }
+
+  /* ==========================================================================
+     ANA SAYFA: GERÇEK KATMANLI BÖLÜM MİMARİSİ (Sticky Section Stacking)
+     ========================================================================== */
+  .scroll-stack {
+    position: relative;
+    isolation: isolate;
+    z-index: 1;
+    background-color: #F5EDE0;
+  }
+
+  .layer-section {
+    position: relative;
+    width: 100%;
+    overflow: clip;
+  }
+
+  /* Mobilde yalnızca tam ekran Hero katmanı sticky kalır; uzun içerikli bölümler kilitlenmeden akar */
+  .scroll-stack.is-layered > #hero.layer-section {
+    position: sticky;
+    top: 0;
+  }
+
+  /* Masaüstü ve tablette tüm bölümler kendi doğal yüksekliğine göre (--sticky-top) katmanlanır */
+  @media (min-width: 768px) {
+    .scroll-stack.is-layered > .layer-section {
+      position: sticky;
+      top: var(--sticky-top, 0px);
+    }
+  }
+
+  /* Yalnızca iç içerik katmanına rAF üzerinden transform uygulanır; CSS transition çakışması yoktur */
+  .layer-inner {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    transform-origin: center center;
+  }
+
+  /* Görsel derinlik ve hafif parallax çerçevesi (rAF ile çakışmaması için CSS transition yok) */
+  .parallax-frame {
+    position: relative;
+    overflow: hidden;
+  }
+  .parallax-media {
+    transform: translate3d(0, var(--parallax-y, 0px), 0) scale(var(--parallax-scale, 1.035));
+  }
+
+  /* Admin paneli */
+  .admin-card {
+    @apply rounded-2xl border border-charcoal/10 bg-white p-5 shadow-sm sm:p-6;
+  }
+  .admin-nav-link {
+    @apply rounded-full px-4 py-2 text-xs font-medium uppercase tracking-arch text-muted transition-colors hover:text-charcoal;
+  }
+  .admin-nav-link[aria-current='page'] {
+    @apply bg-charcoal text-bone;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full border border-charcoal/15 bg-bone px-3 py-1 text-[11px] font-medium text-muted;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.js-ready .reveal {
+    transition-duration: 0.45s;
+  }
+}

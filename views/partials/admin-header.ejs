@@ -1,0 +1,30 @@
+<%- include('head') %>
+<body class="bg-bone">
+<a href="#icerik" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-charcoal focus:px-5 focus:py-3 focus:text-xs focus:text-bone">İçeriğe geç</a>
+<header class="sticky top-0 z-40 border-b border-charcoal/10 bg-ivory/95 backdrop-blur-md">
+  <div class="container-x flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3">
+    <a href="/admin" class="flex items-center gap-3" aria-label="Yönetim paneli ana sayfa">
+      <img src="<%= site.logo %>" alt="" width="40" height="40" class="h-10 w-10 rounded-full border border-charcoal/15 bg-white object-cover p-0.5">
+      <span class="flex flex-col leading-none">
+        <span class="font-serif text-sm font-semibold uppercase tracking-[0.2em]"><%= site.shortName %></span>
+        <span class="mt-1 text-[9px] font-medium uppercase tracking-wide-arch text-bronze-dark">Yönetim Paneli</span>
+      </span>
+    </a>
+    <nav class="order-3 -mx-1 flex w-full items-center gap-1 overflow-x-auto px-1 pb-1 md:order-2 md:w-auto md:pb-0" aria-label="Yönetim menüsü">
+      <a href="/admin" class="admin-nav-link whitespace-nowrap" <%- adminPage === 'dashboard' ? 'aria-current="page"' : '' %>>Dashboard</a>
+      <a href="/admin/projeler" class="admin-nav-link whitespace-nowrap" <%- adminPage === 'projects' ? 'aria-current="page"' : '' %>>Projeler</a>
+      <a href="/admin/talepler" class="admin-nav-link whitespace-nowrap" <%- adminPage === 'inquiries' ? 'aria-current="page"' : '' %>>Talepler</a>
+    </nav>
+    <div class="order-2 flex items-center gap-3 md:order-3">
+      <a href="/" target="_blank" rel="noopener" class="hidden text-xs font-medium uppercase tracking-arch text-muted hover:text-bronze-dark sm:inline">Siteyi Gör ↗</a>
+      <form action="/logout" method="post">
+        <%- csrfField() %>
+        <button type="submit" class="btn btn-outline btn-sm">Çıkış<% if (locals.admin) { %> (<%= admin.username %>)<% } %></button>
+      </form>
+    </div>
+  </div>
+</header>
+<main id="icerik" class="container-x py-8 lg:py-10">
+<% if (locals.flash) { %>
+  <div class="mb-6 rounded-xl border px-5 py-4 text-sm <%= flash.type === 'success' ? 'border-emerald-700/30 bg-emerald-50 text-emerald-900' : 'border-red-700/30 bg-red-50 text-red-900' %>" role="status" data-flash><%= flash.message %></div>
+<% } %>

@@ -1,0 +1,49 @@
+<%
+  const m = Object.assign(
+    { title: site.name, description: site.tagline, path: currentPath, image: null, ogType: 'website', noindex: false, jsonLd: false },
+    locals.meta || {}
+  );
+  const canonicalUrl = absUrl(m.path || currentPath || '/');
+  const ogImage = absUrl(m.image || site.defaultOgImage);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: site.name,
+    url: absUrl('/'),
+    logo: absUrl(site.logo),
+    image: ogImage,
+    email: site.email,
+    telephone: site.phone,
+    description: 'Lüks konut, villa, penthouse ve ticari alanlar için iç mimari tasarım ve uygulama.',
+    address: [
+      { '@type': 'PostalAddress', addressLocality: 'Maltepe', addressRegion: 'İstanbul', addressCountry: 'TR' }
+    ]
+  };
+%><!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= m.title %></title>
+  <meta name="description" content="<%= m.description %>">
+<% if (m.noindex) { %>  <meta name="robots" content="noindex, nofollow">
+<% } else { %>  <link rel="canonical" href="<%= canonicalUrl %>">
+  <meta property="og:site_name" content="<%= site.name %>">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:type" content="<%= m.ogType %>">
+  <meta property="og:title" content="<%= m.title %>">
+  <meta property="og:description" content="<%= m.description %>">
+  <meta property="og:url" content="<%= canonicalUrl %>">
+  <meta property="og:image" content="<%= ogImage %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= m.title %>">
+  <meta name="twitter:description" content="<%= m.description %>">
+  <meta name="twitter:image" content="<%= ogImage %>">
+<% } %>  <meta name="theme-color" content="#F5EDE0">
+  <link rel="icon" type="image/png" href="<%= site.favicon %>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css?v=<%= assetVersion %>">
+<% if (m.jsonLd) { %>  <script type="application/ld+json"><%- JSON.stringify(jsonLd).replace(/</g, '\\u003c') %></script>
+<% } %></head>

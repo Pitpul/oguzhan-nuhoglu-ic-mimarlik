@@ -1,0 +1,58 @@
+<%- include('../partials/head') %>
+<body>
+<%- include('../partials/navbar') %>
+
+<main id="icerik">
+  <%- include('../partials/page-hero', {
+    eyebrow: 'Küratöryel Mimari Arşiv',
+    title: 'Seçkin Projeler &',
+    accent: 'Mimari Portfolyo',
+    lead: 'Her hacim; doğal ışığın, hakiki malzemenin ve kullanıcının yaşam ritminin yeniden yorumlandığı özgün bir mimari anlatıdır.'
+  }) %>
+
+  <section class="sticky top-20 z-30 border-b border-charcoal/10 bg-bone/95 py-4 backdrop-blur-md" aria-label="Proje filtreleri">
+    <div class="container-x flex flex-wrap items-center justify-between gap-4">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3" role="group" aria-label="Kategoriye göre filtrele" data-filter-group>
+        <button type="button" class="filter-btn" data-filter="all" aria-pressed="<%= initialFilter === 'all' %>">Tümü (<%= counts.all %>)</button>
+        <% projectCategories.forEach((c) => { %>
+          <button type="button" class="filter-btn" data-filter="<%= c.value %>" aria-pressed="<%= initialFilter === c.value %>"><%= c.label %> (<%= counts[c.value] %>)</button>
+        <% }) %>
+      </div>
+      <p class="hidden items-center gap-2 text-[11px] uppercase tracking-arch text-muted sm:flex" aria-live="polite">
+        <span class="h-1.5 w-1.5 rounded-full bg-bronze"></span><span data-visible-count><%= counts.all %></span> proje gösteriliyor
+      </p>
+    </div>
+  </section>
+
+  <section class="section-y bg-ivory">
+    <div class="container-x">
+      <% if (projects.length) { %>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8" id="projects-grid" data-initial-filter="<%= initialFilter %>" data-stagger="75">
+          <% projects.forEach((project) => { %>
+            <div class="reveal" data-project-item data-category="<%= project.category %>"><%- include('../partials/project-card', { project }) %></div>
+          <% }) %>
+        </div>
+        <div class="hidden rounded-2xl border border-dashed border-charcoal/20 bg-bone px-6 py-16 text-center" data-filter-empty>
+          <p class="font-serif text-2xl">Bu kategoride henüz proje bulunmuyor.</p>
+          <p class="mt-2 text-sm font-light text-muted">Diğer kategorilere göz atabilirsiniz.</p>
+        </div>
+      <% } else { %>
+        <div class="rounded-2xl border border-dashed border-charcoal/20 bg-bone px-6 py-20 text-center">
+          <p class="font-serif text-3xl">Portfolyomuz güncelleniyor.</p>
+          <p class="mx-auto mt-3 max-w-md text-sm font-light text-muted">Yeni projelerimiz çok yakında burada olacak. Çalışmalarımız hakkında bilgi almak için bizimle iletişime geçin.</p>
+          <a href="/iletisim" class="btn btn-dark mt-8">İletişime Geçin</a>
+        </div>
+      <% } %>
+    </div>
+  </section>
+
+  <section class="border-y border-charcoal/10 bg-bone px-5 py-20 text-center">
+    <div class="reveal mx-auto max-w-3xl" data-reveal="scale">
+      <p class="font-serif text-3xl font-light italic text-bronze sm:text-4xl">“Per Aspera Ad Astra”</p>
+      <h2 class="mt-3 font-serif text-2xl font-normal sm:text-3xl">Zorluklardan Yıldızlara</h2>
+      <a href="/iletisim" class="btn btn-dark mt-8">Yeni Bir Proje Başlatın <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer', { scripts: ['/js/portfolio.js'] }) %>

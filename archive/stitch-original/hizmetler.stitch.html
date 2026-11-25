@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oğuzhan Nuhoğlu İç Mimarlık - Hizmetlerimiz</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cream: '#F5EDE0',
+              bone: '#FAF7F2',
+              card: '#FFFFFF',
+              dark: '#1A1917',
+              gray: '#5C5852',
+              lightGray: '#8A857D',
+              border: 'rgba(26, 25, 23, 0.12)',
+              bronze: '#9E7B56',
+              bronzeHover: '#846443'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F5EDE0;
+      color: #1A1917;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      letter-spacing: -0.01em;
+    }
+    .serif-title {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .grid-blueprint {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(26, 25, 23, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26, 25, 23, 0.04) 1px, transparent 1px);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .accordion-content.active {
+      max-height: 280px;
+      opacity: 1;
+    }
+    .accordion-icon {
+      transition: transform 0.3s ease;
+    }
+    .accordion-icon.active {
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+<body class="selection:bg-[#9E7B56]/20 selection:text-[#1A1917]">
+
+  <!-- Top Announcement / Reference Coordinates Bar -->
+  <div class="w-full bg-[#1A1917] text-[#F5EDE0]/70 py-1.5 px-6 text-[10px] tracking-[0.25em] uppercase text-center border-b border-white/5 flex items-center justify-between z-50 relative">
+    <span class="hidden md:inline font-mono">ATELIER ISTANBUL // NISANTASI & BODRUM</span>
+    <span class="mx-auto font-mono text-[#F5EDE0]/90">MİMARİ DİSİPLİNLER & PROJE FAZLARI // REF. 41°02'49.0"N 28°59'42.0"E</span>
+    <span class="hidden md:inline font-mono">EST. 2012</span>
+  </div>
+
+  <!-- Persistent Architectural Glass Header (Navbar) -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[#F5EDE0]/90 border-b border-[#1A1917]/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-[#1A1917]/20 p-0.5 bg-[#FAF7F2] transition-transform duration-300 group-hover:scale-105">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2YGGV9nz4fyU86LfIivsW57n3ZA-195z5XUYpjS-XcNe57Gpi5wWLEiIMh45nMn3QqLBGC56siRWAXeQhiz_rJ5uMR5EkPe413Iw5kxK-hrbATfr3oEzTfVrIynDw7e4ZwBZ7-haSuQ1dh-9GEpTF78RMXU8irqTsyOPYjue4WGEP7yvHMNkyFDgdnwA-fmVVre9TNuGWF_dcXbPqdQBgSCmoR3ocmzPkXBes8PyFBlqSO2EET0nW" alt="Oğuzhan Nuhoğlu İç Mimarlık" class="w-full h-full object-contain">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif text-lg tracking-[0.18em] uppercase font-semibold leading-tight text-[#1A1917]">Oğuzhan Nuhoğlu</span>
+          <span class="text-[9px] tracking-[0.28em] text-[#5C5852] uppercase font-light">İç Mimarlık Stüdyosu</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <!-- Hizmetlerimiz Dropdown (Active Page) -->
+        <div class="relative group">
+          <a href="hizmetler.html" class="flex items-center gap-1.5 text-xs font-medium tracking-[0.18em] uppercase text-[#1A1917] border-b border-[#1A1917] pb-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#9E7B56]"></span>
+            <span>Hizmetlerimiz</span>
+            <svg class="w-3 h-3 text-[#1A1917] transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </a>
+          <!-- Dropdown Menu -->
+          <div class="absolute top-full left-0 pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0">
+            <div class="bg-[#FAF7F2] border border-[#1A1917]/10 p-3 shadow-xl rounded-sm flex flex-col gap-1.5">
+              <a href="#konut" class="px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-[#5C5852] hover:text-[#1A1917] hover:bg-[#F5EDE0] rounded-sm transition-colors flex items-center justify-between">
+                <span>01. Konut İç Mimarisi</span>
+                <span class="text-[9px] text-[#9E7B56]">→</span>
+              </a>
+              <a href="#ticari" class="px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-[#5C5852] hover:text-[#1A1917] hover:bg-[#F5EDE0] rounded-sm transition-colors flex items-center justify-between">
+                <span>02. Ticari Alan Tasarımı</span>
+                <span class="text-[9px] text-[#9E7B56]">→</span>
+              </a>
+              <a href="#3d" class="px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-[#5C5852] hover:text-[#1A1917] hover:bg-[#F5EDE0] rounded-sm transition-colors flex items-center justify-between">
+                <span>03. 3D Görselleştirme</span>
+                <span class="text-[9px] text-[#9E7B56]">→</span>
+              </a>
+              <a href="#anahtar-teslim" class="px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-[#5C5852] hover:text-[#1A1917] hover:bg-[#F5EDE0] rounded-sm transition-colors flex items-center justify-between">
+                <span>04. Anahtar Teslim Uygulama</span>
+                <span class="text-[9px] text-[#9E7B56]">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="hakkimizda.html" class="text-xs font-medium tracking-[0.18em] uppercase text-[#5C5852] hover:text-[#1A1917] transition-colors pb-1">Hakkımızda</a>
+        <a href="projeler.html" class="text-xs font-medium tracking-[0.18em] uppercase text-[#5C5852] hover:text-[#1A1917] transition-colors pb-1">Projeler</a>
+      </nav>
+
+      <!-- CTA Contact Link -->
+      <div class="flex items-center gap-4">
+        <a href="index.html#iletisim" class="px-5 py-2.5 bg-[#1A1917] text-[#FAF7F2] hover:bg-[#9E7B56] transition-all duration-300 text-[11px] font-medium tracking-[0.2em] uppercase rounded-sm shadow-sm hover:shadow-md">
+          İletişim & Randevu
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Editorial Hero Section -->
+  <section class="relative pt-20 pb-24 md:pt-28 md:pb-32 px-6 lg:px-12 grid-blueprint border-b border-[#1A1917]/10 overflow-hidden">
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      
+      <!-- Monogram / Category pill -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1A1917]/15 bg-[#FAF7F2]/80 backdrop-blur-sm mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#9E7B56]"></span>
+        <span class="text-[11px] font-mono tracking-[0.2em] uppercase text-[#5C5852]">KAPSAMLI MİMARİ PRATİK & MÜHENDİSLİK</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="serif-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] tracking-tight text-[#1A1917] mb-8">
+        Fikirden Anahtar Teslimine <br>
+        <span class="italic font-light text-[#9E7B56]">Bütüncül Mimari Hizmetler</span>
+      </h1>
+
+      <!-- Intro Subtitle -->
+      <p class="max-w-2xl mx-auto text-[#5C5852] text-base md:text-lg leading-relaxed font-light mb-12">
+        Mekânları yalnızca estetik birer yüzey olarak değil; insan ölçeğinde sirkülasyon, hakiki malzeme dürüstlüğü ve kusursuz teknik mühendislikle hayat bulan yaşayan organizmalar olarak tasarlıyoruz.
+      </p>
+
+      <!-- Jump Navigation Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5 pt-4 text-xs">
+        <a href="#konut" class="px-4 py-2 bg-[#FAF7F2] border border-[#1A1917]/10 hover:border-[#1A1917] text-[#1A1917] tracking-[0.12em] uppercase transition-all duration-200">01. Konut Mimarisi</a>
+        <a href="#ticari" class="px-4 py-2 bg-[#FAF7F2] border border-[#1A1917]/10 hover:border-[#1A1917] text-[#1A1917] tracking-[0.12em] uppercase transition-all duration-200">02. Ticari Alanlar</a>
+        <a href="#3d" class="px-4 py-2 bg-[#FAF7F2] border border-[#1A1917]/10 hover:border-[#1A1917] text-[#1A1917] tracking-[0.12em] uppercase transition-all duration-200">03. 3D Görselleştirme</a>
+        <a href="#anahtar-teslim" class="px-4 py-2 bg-[#FAF7F2] border border-[#1A1917]/10 hover:border-[#1A1917] text-[#1A1917] tracking-[0.12em] uppercase transition-all duration-200">04. Anahtar Teslim</a>
+      </div>
+    </div>
+
+    <!-- Architectural Axis Line -->
+    <div class="w-px h-16 bg-gradient-to-b from-[#1A1917]/20 to-transparent mx-auto mt-12"></div>
+  </section>
+
+  <!-- 4 DETAILED SERVICES (ZIGZAG / ALTERNATING LAYOUT) -->
+  <main class="divide-y divide-[#1A1917]/10">
+
+    <!-- 01. Konut İç Mimarisi (#konut) -->
+    <section id="konut" class="py-24 md:py-32 px-6 lg:px-12 bg-[#FAF7F2] relative scroll-mt-20">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Image Column (Left) -->
+          <div class="lg:col-span-7 group">
+            <div class="relative overflow-hidden border border-[#1A1917]/15 bg-[#F5EDE0] shadow-sm">
+              <div class="aspect-[4/3] w-full overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrAoJkebSyDIFP97Mo2mhuiHLrF39pHGPJnYyBHn6Ta0vDiqwnvPeFr52ngRHMP8BJbrlfTdxM0Rw0lOg84SYDG3RkaX6YCsklpjzp7pQqYA_43D6ihhaS_yYioDKkZ4CaTMmEb4jrNJ29vTUerOzwbqtexVhnsAHIcADLfjm82B6Fxos5Hfbegrf0wMWboAMtG5EGsbqzgPlllq8v2hn5wmR3zY0V_Gq5rWHkv-cYEf" alt="Bebek Yalı Dairesi & Konut İç Mimarlık" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+              </div>
+              <!-- Floating Metre / Badge -->
+              <div class="absolute bottom-4 left-4 bg-[#FAF7F2]/95 backdrop-blur-sm border border-[#1A1917]/10 px-4 py-2 text-[10px] tracking-[0.2em] font-mono uppercase text-[#1A1917]">
+                RESIDENCE & VILLA ARCHITECTURE // 01
+              </div>
+            </div>
+            <!-- Technical specs footnote -->
+            <div class="flex items-center justify-between text-[11px] font-mono text-[#8A857D] mt-3 px-1">
+              <span>PROJECT REF: BEBEK YALI RESIDENCE</span>
+              <span>SCALE: 1:50 BESPOKE PLAN</span>
+            </div>
+          </div>
+
+          <!-- Content Column (Right) -->
+          <div class="lg:col-span-5 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-xs font-mono font-semibold tracking-[0.2em] text-[#9E7B56]">SEKSİYON 01</span>
+              <div class="h-px w-8 bg-[#9E7B56]"></div>
+              <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#8A857D]">ÖZEL YAŞAM ALANLARI</span>
+            </div>
+
+            <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1917] leading-tight mb-6">
+              Konut İç Mimarisi & <br><span class="italic text-[#9E7B56]">Rezidans Tasarımı</span>
+            </h2>
+
+            <p class="text-[#5C5852] text-sm md:text-base leading-relaxed font-light mb-8">
+              Villa, tarihi yalı, penthouse ve lüks rezidanslarda; kullanıcının gündelik yaşam alışkanlıklarını mimari bir zarafetle buluşturuyoruz. Mekânın ışık yönünü, tavan oranlarını ve doğal hava sirkülasyonunu gözeterek sakin, dingin ve zamana direnen yaşam kurguları inşa ediyoruz.
+            </p>
+
+            <!-- Detailed Scope Checklist -->
+            <div class="space-y-4 border-t border-b border-[#1A1917]/10 py-6 mb-8">
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Hacim & Sirkülasyon Planlaması</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Duvar optimizasyonu, açık-kapalı alan hiyerarşisi ve akustik konfor bölgeleri.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Bespoke (Kişiye Özel) Sabit & Hareketli Mobilya</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Ham ceviz, traverten, mermer ve pirinç detaylı özgün marangozluk imalatları.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Akıllı Aydınlatma & Duyu Senaryoları</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Gün döngüsüne uyarlanan dolaylı mimari aydınlatma, sıva altı raylar ve heykelsi armatürler.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Link -->
+            <div class="flex items-center gap-6">
+              <a href="projeler.html" class="inline-flex items-center gap-2 text-xs font-medium tracking-[0.16em] uppercase text-[#1A1917] hover:text-[#9E7B56] transition-colors group">
+                <span>Konut Projelerimizi İnceleyin</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+              <span class="text-[#8A857D] text-xs font-mono">|</span>
+              <a href="index.html#iletisim" class="text-xs font-medium tracking-[0.16em] uppercase text-[#9E7B56] hover:underline">
+                Keşif Talebi
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 02. Ticari Alan Tasarımı (#ticari) -->
+    <section id="ticari" class="py-24 md:py-32 px-6 lg:px-12 bg-[#F5EDE0] relative scroll-mt-20">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Content Column (Left) -->
+          <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-xs font-mono font-semibold tracking-[0.2em] text-[#9E7B56]">SEKSİYON 02</span>
+              <div class="h-px w-8 bg-[#9E7B56]"></div>
+              <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#8A857D]">KURUMSAL & TİCARİ</span>
+            </div>
+
+            <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1917] leading-tight mb-6">
+              Ticari Alan & <br><span class="italic text-[#9E7B56]">Kurumsal Ofis Tasarımı</span>
+            </h2>
+
+            <p class="text-[#5C5852] text-sm md:text-base leading-relaxed font-light mb-8">
+              Yönetim merkezleri, konsept mağazalar, gastronomi mekânları ve butik oteller için; marka değerini fiziksel mekânda somutlaştıran mimari stratejiler geliştiriyoruz. Ziyaretçi psikolojisini ve işlevsel çalışma verimliliğini üst düzey malzeme diliyle birleştiriyoruz.
+            </p>
+
+            <!-- Detailed Scope Checklist -->
+            <div class="space-y-4 border-t border-b border-[#1A1917]/10 py-6 mb-8">
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Marka Deneyimi & Mekânsal Kimlik</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Kurumsal prestiji yansıtan karşılama bankoları, heykelsi sergileme nişleri ve yönlendirme tasarımları.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Akustik Mühendislik & Çalışma Dinamikleri</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Oluklu ahşap duvar kaplamaları, sessiz toplantı kapsülleri ve ergonomik yönetici süitleri.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Yüksek Trafik & Ağır Dayanımlı Malzemeler</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Ticari kullanım standartlarına uygun doğal taş, microcement zeminler ve yangın/aşınma sertifikalı tekstiller.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Link -->
+            <div class="flex items-center gap-6">
+              <a href="projeler.html" class="inline-flex items-center gap-2 text-xs font-medium tracking-[0.16em] uppercase text-[#1A1917] hover:text-[#9E7B56] transition-colors group">
+                <span>Ticari Portfolyoyu Görün</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+              <span class="text-[#8A857D] text-xs font-mono">|</span>
+              <a href="index.html#iletisim" class="text-xs font-medium tracking-[0.16em] uppercase text-[#9E7B56] hover:underline">
+                Kurumsal Toplantı
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Image Column (Right) -->
+          <div class="lg:col-span-7 order-1 lg:order-2 group">
+            <div class="relative overflow-hidden border border-[#1A1917]/15 bg-[#FAF7F2] shadow-sm">
+              <div class="aspect-[4/3] w-full overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrBbeyEVNFKvtwIBWsx1JWZiA-D_5iQZuBJX0n1YuJJbzNCdd5S2TQVu1es02TeUbXOnhtkemVlguN1VGkmaWDZo7NjS106ILpRBMoiVkl7UMZa3XdZJ1VAnUUleq46EZegCwaebAqJRw0wpzuRmQWNJcSZW2A40Svm0Ph2wf-xGYF54qaNoO4x1W3jC-kCksciWd2Tva7DgLQ9SUHWVteVM788MTnPpIG5DkvLxkEGL" alt="Levent Executive Headquarters & Ticari Mimarlık" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+              </div>
+              <!-- Floating Metre / Badge -->
+              <div class="absolute bottom-4 right-4 bg-[#FAF7F2]/95 backdrop-blur-sm border border-[#1A1917]/10 px-4 py-2 text-[10px] tracking-[0.2em] font-mono uppercase text-[#1A1917]">
+                EXECUTIVE HEADQUARTERS // 02
+              </div>
+            </div>
+            <!-- Technical specs footnote -->
+            <div class="flex items-center justify-between text-[11px] font-mono text-[#8A857D] mt-3 px-1">
+              <span>PROJECT REF: LEVENT HEADQUARTERS (1.200 M²)</span>
+              <span>TYPOLOGY: CORPORATE HQ</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 03. 3D Görselleştirme (#3d) -->
+    <section id="3d" class="py-24 md:py-32 px-6 lg:px-12 bg-[#FAF7F2] relative scroll-mt-20">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Image Column (Left) -->
+          <div class="lg:col-span-7 group">
+            <div class="relative overflow-hidden border border-[#1A1917]/15 bg-[#F5EDE0] shadow-sm">
+              <div class="aspect-[4/3] w-full overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL7tRgyy38e6og5PKPA_65MxtGH6QM8O306O23lyrf01FWPVopAmpaDo7KR58pcX6HV5dGCQunQLbCzTsn7mmGYlCBGqrF1m_zALYuC2KKV6UkduGIRlU4en2pKYZBGYNSs-64VhXDoCCUoyW2MvigKGROYOus4BBrpUGsOlFJsgJZde6RMc3ve5eTrDj_D9htHzS10cmeheznHCiXffvBmGKWdFC8yjp_J9kKgpk" alt="3D Mimari Görselleştirme & Ray Tracing Render" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+              </div>
+              <!-- Floating Metre / Badge -->
+              <div class="absolute bottom-4 left-4 bg-[#FAF7F2]/95 backdrop-blur-sm border border-[#1A1917]/10 px-4 py-2 text-[10px] tracking-[0.2em] font-mono uppercase text-[#1A1917]">
+                CGI & PHOTOREALISTIC RENDERING // 03
+              </div>
+            </div>
+            <!-- Technical specs footnote -->
+            <div class="flex items-center justify-between text-[11px] font-mono text-[#8A857D] mt-3 px-1">
+              <span>RAY-TRACED LIGHT ENGINE: 1:1 ACCURACY</span>
+              <span>OUTPUT: 8K ULTRA-RES RENDERINGS</span>
+            </div>
+          </div>
+
+          <!-- Content Column (Right) -->
+          <div class="lg:col-span-5 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-xs font-mono font-semibold tracking-[0.2em] text-[#9E7B56]">SEKSİYON 03</span>
+              <div class="h-px w-8 bg-[#9E7B56]"></div>
+              <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#8A857D]">DİJİTAL SİMÜLASYON</span>
+            </div>
+
+            <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1917] leading-tight mb-6">
+              3D Görselleştirme & <br><span class="italic text-[#9E7B56]">Fotogerçekçi Simülasyon</span>
+            </h2>
+
+            <p class="text-[#5C5852] text-sm md:text-base leading-relaxed font-light mb-8">
+              Şantiye başlamadan önce mekânın her santimetresini, güneş ışığının mevsimsel açısını ve seçilen mermer plakaların damar dokusunu birebir deneyimlemenizi sağlıyoruz. Sürprizlere yer bırakmayan fotogerçekçi 3D mimari modelleme ile tasarım kararlarınızı güvenle onaylayabilirsiniz.
+            </p>
+
+            <!-- Detailed Scope Checklist -->
+            <div class="space-y-4 border-t border-b border-[#1A1917]/10 py-6 mb-8">
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Işık & Gölge Fiziksel Simülasyonu</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Sabah, öğle ve gece aydınlatma senaryolarının gerçeğe tam sadık hesaplamaları.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Birebir Malzeme & Doku Haritalama</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Tedarik edilecek gerçek taş ocaklarından alınan levha fotoğrafları ve ahşap kaplama yansımaları.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">360° Sanal Tur & Sinematik Animasyon</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Tablet ve VR gözlük uyumlu interaktif mekânsal gezinti ve mimari sunum videoları.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Link -->
+            <div class="flex items-center gap-6">
+              <a href="hakkimizda.html" class="inline-flex items-center gap-2 text-xs font-medium tracking-[0.16em] uppercase text-[#1A1917] hover:text-[#9E7B56] transition-colors group">
+                <span>Tasarım Sürecimizi Görün</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+              <span class="text-[#8A857D] text-xs font-mono">|</span>
+              <a href="index.html#iletisim" class="text-xs font-medium tracking-[0.16em] uppercase text-[#9E7B56] hover:underline">
+                Model Ön İncelemesi
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 04. Anahtar Teslim Uygulama (#anahtar-teslim) -->
+    <section id="anahtar-teslim" class="py-24 md:py-32 px-6 lg:px-12 bg-[#F5EDE0] relative scroll-mt-20">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Content Column (Left) -->
+          <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-xs font-mono font-semibold tracking-[0.2em] text-[#9E7B56]">SEKSİYON 04</span>
+              <div class="h-px w-8 bg-[#9E7B56]"></div>
+              <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#8A857D]">ŞANTİYE & TAAHHÜT</span>
+            </div>
+
+            <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1917] leading-tight mb-6">
+              Anahtar Teslim Uygulama & <br><span class="italic text-[#9E7B56]">Şantiye Yönetimi</span>
+            </h2>
+
+            <p class="text-[#5C5852] text-sm md:text-base leading-relaxed font-light mb-8">
+              Çizilen projelerin şantiyede milimetrik hassasiyetle gerçeğe dönüşmesini sağlıyoruz. Bütçe aşımı ve zaman gecikmesi risklerini sıfırlayan anahtar teslim taahhüt modelimizle; yıkımdan ince temizliğe, sanat eseri yerleşiminden mobilya montajına kadar tüm süreci tek elden yönetiyoruz.
+            </p>
+
+            <!-- Detailed Scope Checklist -->
+            <div class="space-y-4 border-t border-b border-[#1A1917]/10 py-6 mb-8">
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Şeffaf Bütçe & Kesin Zaman Çizelgesi</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Sözleşmeli metraj dökümü, birim fiyat garantisi ve gecikme cezası taahhütlü takvim.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Usta Zanaatkâr Kadrosu & Malzeme Tedariği</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Mermer ustaları, kütüphane marangozları ve akredite elektrik-mekanik mühendisleri.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#1A1917] text-[#FAF7F2] flex items-center justify-center text-[9px] mt-0.5 font-mono">✓</span>
+                <div>
+                  <h4 class="text-xs font-semibold tracking-[0.08em] uppercase text-[#1A1917]">Günlük Şantiye Denetimi & İlerleme Raporu</h4>
+                  <p class="text-xs text-[#5C5852] font-light mt-0.5">Mimari denetim ekibimizin düzenli fotoğraf ve pafta kontrolleriyle hazırlanan haftalık müşteri brifingleri.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Link -->
+            <div class="flex items-center gap-6">
+              <a href="index.html#iletisim" class="inline-flex items-center gap-2 text-xs font-medium tracking-[0.16em] uppercase text-[#1A1917] hover:text-[#9E7B56] transition-colors group">
+                <span>Projeniz İçin Teklif Alın</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+              <span class="text-[#8A857D] text-xs font-mono">|</span>
+              <span class="text-xs font-mono text-[#5C5852]">%100 Teslimat Sadakati</span>
+            </div>
+
+          </div>
+
+          <!-- Image Column (Right) -->
+          <div class="lg:col-span-7 order-1 lg:order-2 group">
+            <div class="relative overflow-hidden border border-[#1A1917]/15 bg-[#FAF7F2] shadow-sm">
+              <div class="aspect-[4/3] w-full overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCShWFWc_aEtxVqNikS9C_g3m22zBBMlORLUHv3J86rk8DxtZqoPBza9mYDVyu5CyfSnfaEkewPHSXD0KUHCjM5Hga2GWaZMZpFEFS3qZUz1l6of1cPfNesXLmtarWZVvmCCQbA-6DLXAjptlQjCYUdmryviw1nZnLX0dY-7igUDLHVVEdgoeUje9YUDUPbHx8Lji0FUAsy-dkuznF9RhxYrD0HBYT5TEIjUtY2IM4" alt="Lüks Konut Anahtar Teslim Şantiye Uygulaması" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+              </div>
+              <!-- Floating Metre / Badge -->
+              <div class="absolute bottom-4 right-4 bg-[#FAF7F2]/95 backdrop-blur-sm border border-[#1A1917]/10 px-4 py-2 text-[10px] tracking-[0.2em] font-mono uppercase text-[#1A1917]">
+                TURNKEY CONSTRUCTION // 04
+              </div>
+            </div>
+            <!-- Technical specs footnote -->
+            <div class="flex items-center justify-between text-[11px] font-mono text-[#8A857D] mt-3 px-1">
+              <span>SITE QUALITY SUPERVISION: MİMAR OĞUZHAN NUHOĞLU</span>
+              <span>STATUS: ZERO TOLERANCE EXECUTION</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SIKÇA SORULAN SORULAR (MINIMALIST AKORDEON BÖLÜMÜ) -->
+  <section class="py-24 md:py-32 px-6 lg:px-12 bg-[#FAF7F2] border-t border-b border-[#1A1917]/10">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#1A1917]/15 bg-[#F5EDE0] mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E7B56]"></span>
+          <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#5C5852]">ŞEFFAF SÜREÇLER & MERAK EDİLENLER</span>
+        </div>
+        <h2 class="serif-title text-3xl sm:text-4xl md:text-5xl font-normal text-[#1A1917]">
+          Sıkça Sorulan Sorular
+        </h2>
+        <p class="text-[#5C5852] text-sm font-light mt-3 max-w-xl mx-auto">
+          Mimari tasarım aşamaları, teslim süreleri, keşif ve bütçelendirme yaklaşımlarımız hakkında temel rehber.
+        </p>
+      </div>
+
+      <!-- Accordion Container -->
+      <div class="space-y-4" id="faq-accordion">
+        
+        <!-- Accordion Item 1 -->
+        <div class="border border-[#1A1917]/15 bg-[#FFFFFF] rounded-sm overflow-hidden transition-colors hover:border-[#1A1917]/30">
+          <button type="button" class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleAccordion(0)">
+            <span class="text-sm md:text-base font-medium tracking-[0.04em] text-[#1A1917] flex items-center gap-3">
+              <span class="font-mono text-xs text-[#9E7B56]">01.</span>
+              <span>Bir mimari projenin tasarım ve 3D görselleştirme süreci ne kadar sürer?</span>
+            </span>
+            <span class="accordion-icon w-6 h-6 rounded-full border border-[#1A1917]/20 flex items-center justify-center text-sm font-light text-[#1A1917] flex-shrink-0">+</span>
+          </button>
+          <div class="accordion-content px-6 pb-6 text-sm text-[#5C5852] leading-relaxed font-light border-t border-transparent">
+            Projenin büyüklüğüne ve tipolojisine bağlı olmakla birlikte; ortalama bir konut veya rezidans projesinin konsept tasarımı, malzeme seçimleri ve fotogerçekçi 3D modellemeleri 3 ila 6 hafta arasında tamamlanır. Büyük ölçekli ticari veya villa projelerinde bu süre 6–10 haftayı bulabilir. Her aşama müşterimizin onayıyla bir sonraki adıma aktarılır.
+          </div>
+        </div>
+
+        <!-- Accordion Item 2 -->
+        <div class="border border-[#1A1917]/15 bg-[#FFFFFF] rounded-sm overflow-hidden transition-colors hover:border-[#1A1917]/30">
+          <button type="button" class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleAccordion(1)">
+            <span class="text-sm md:text-base font-medium tracking-[0.04em] text-[#1A1917] flex items-center gap-3">
+              <span class="font-mono text-xs text-[#9E7B56]">02.</span>
+              <span>İlk keşif ve tanışma toplantısı ücretli midir?</span>
+            </span>
+            <span class="accordion-icon w-6 h-6 rounded-full border border-[#1A1917]/20 flex items-center justify-center text-sm font-light text-[#1A1917] flex-shrink-0">+</span>
+          </button>
+          <div class="accordion-content px-6 pb-6 text-sm text-[#5C5852] leading-relaxed font-light border-t border-transparent">
+            İstanbul (Nişantaşı) ve Bodrum stüdyolarımızda ya da online ortamda gerçekleştirdiğimiz ilk ön görüşme ve ihtiyaç analizi tamamen ücretsizdir. Proje lokasyonunda yerinde yapılacak detaylı rölöve ve teknik keşif çalışması ise projenin kapsamına ve şehir dışı lojistiğine göre tekliflendirilir.
+          </div>
+        </div>
+
+        <!-- Accordion Item 3 -->
+        <div class="border border-[#1A1917]/15 bg-[#FFFFFF] rounded-sm overflow-hidden transition-colors hover:border-[#1A1917]/30">
+          <button type="button" class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleAccordion(2)">
+            <span class="text-sm md:text-base font-medium tracking-[0.04em] text-[#1A1917] flex items-center gap-3">
+              <span class="font-mono text-xs text-[#9E7B56]">03.</span>
+              <span>Sadece tasarım mı yapıyorsunuz, yoksa uygulamayı da üstleniyor musunuz?</span>
+            </span>
+            <span class="accordion-icon w-6 h-6 rounded-full border border-[#1A1917]/20 flex items-center justify-center text-sm font-light text-[#1A1917] flex-shrink-0">+</span>
+          </button>
+          <div class="accordion-content px-6 pb-6 text-sm text-[#5C5852] leading-relaxed font-light border-t border-transparent">
+            Stüdyomuz her iki modele de uygundur. Arzu eden müşterilerimize yalnızca konsept + detaylı teknik uygulama paftaları (elektrik, mekanik, marangozluk imalat çizimleri) teslim edebiliriz. Ancak tasarımın milimetrik sadakatle hayata geçmesi adına anahtar teslim şantiye yönetimi ve taahhüt hizmeti vermeyi tercih ediyoruz.
+          </div>
+        </div>
+
+        <!-- Accordion Item 4 -->
+        <div class="border border-[#1A1917]/15 bg-[#FFFFFF] rounded-sm overflow-hidden transition-colors hover:border-[#1A1917]/30">
+          <button type="button" class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleAccordion(3)">
+            <span class="text-sm md:text-base font-medium tracking-[0.04em] text-[#1A1917] flex items-center gap-3">
+              <span class="font-mono text-xs text-[#9E7B56]">04.</span>
+              <span>İstanbul ve Bodrum dışındaki şehirlerde veya yurt dışında proje yapıyor musunuz?</span>
+            </span>
+            <span class="accordion-icon w-6 h-6 rounded-full border border-[#1A1917]/20 flex items-center justify-center text-sm font-light text-[#1A1917] flex-shrink-0">+</span>
+          </button>
+          <div class="accordion-content px-6 pb-6 text-sm text-[#5C5852] leading-relaxed font-light border-t border-transparent">
+            Evet. Türkiye genelinde özellikle Ege kıyıları, Ankara, İzmir ve Bursa başta olmak üzere projeler yürütüyoruz. Ayrıca Londra, Dubai ve Cenevre gibi merkezlerde konut ve ticari mimari konsept danışmanlığı ile uzaktan şantiye süpervizörlüğü sunmaktayız.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEKLİF & KEŞİF ÇAĞRISI (CTA BANDI) -->
+  <section class="py-20 md:py-28 px-6 lg:px-12 bg-[#F5EDE0] text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto relative z-10">
+      
+      <div class="w-12 h-12 mx-auto rounded-full bg-[#FAF7F2] border border-[#1A1917]/15 flex items-center justify-center mb-6">
+        <svg class="w-5 h-5 text-[#9E7B56]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+      </div>
+
+      <h2 class="serif-title text-3xl sm:text-4xl md:text-5xl font-normal text-[#1A1917] mb-6">
+        Hayalinizdeki Yaşam Alanını <br>
+        <span class="italic text-[#9E7B56]">Birlikte Tasarlayalım</span>
+      </h2>
+
+      <p class="max-w-xl mx-auto text-[#5C5852] text-sm md:text-base leading-relaxed font-light mb-10">
+        Konut, villa veya ticari projeniz için stüdyomuzdan mimari danışmanlık almak ve yerinde keşif randevusu oluşturmak için formu doldurun.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="index.html#iletisim" class="w-full sm:w-auto px-8 py-4 bg-[#1A1917] text-[#FAF7F2] hover:bg-[#9E7B56] transition-all duration-300 text-xs font-semibold tracking-[0.2em] uppercase rounded-sm shadow-md flex items-center justify-center gap-3">
+          <span>PROJE TEKLİFİ & RANDEVU OLUŞTUR</span>
+          <span>→</span>
+        </a>
+        <a href="projeler.html" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-[#1A1917]/30 text-[#1A1917] hover:bg-[#FAF7F2] transition-all duration-300 text-xs font-semibold tracking-[0.2em] uppercase rounded-sm">
+          PORTFOLYOYA DÖN
+        </a>
+      </div>
+
+      <!-- Quick Contact Info -->
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-[#5C5852] font-mono">
+        <span>STÜDYO: +90 (212) 000 00 00</span>
+        <span>•</span>
+        <span>E-POSTA: info@oguzhannuhoglu.com</span>
+        <span>•</span>
+        <span>NİŞANTAŞI & BODRUM</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MANIFESTO SÖZ BANDI ("Per Aspera Ad Astra") -->
+  <section class="py-20 md:py-24 px-6 lg:px-12 bg-[#FAF7F2] border-t border-[#1A1917]/10 text-center">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-[#8A857D] block mb-4">OĞUZHAN NUHOĞLU İÇ MİMARLIK FELSEFESİ</span>
+      <h3 class="serif-title text-4xl sm:text-5xl md:text-6xl italic font-light text-[#1A1917] mb-3">
+        “Per Aspera Ad Astra”
+      </h3>
+      <p class="text-sm font-serif italic text-[#9E7B56] mb-6">Zorluklardan Yıldızlara</p>
+      <div class="w-12 h-px bg-[#1A1917]/20 mx-auto mb-6"></div>
+      <p class="text-xs text-[#5C5852] max-w-md mx-auto font-light leading-relaxed">
+        Tutkuyla örülen mimari detayların zamana meydan okuyan güzelliğe ve dingin bir yaşama dönüşümü.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#1A1917] text-[#FAF7F2] pt-16 pb-12 px-6 lg:px-12 border-t border-[#1A1917]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+      
+      <!-- Brand & Mission Column -->
+      <div class="md:col-span-4 flex flex-col">
+        <div class="flex items-center gap-3.5 mb-5">
+          <div class="w-9 h-9 rounded-full overflow-hidden border border-white/20 p-0.5 bg-[#FAF7F2]">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2YGGV9nz4fyU86LfIivsW57n3ZA-195z5XUYpjS-XcNe57Gpi5wWLEiIMh45nMn3QqLBGC56siRWAXeQhiz_rJ5uMR5EkPe413Iw5kxK-hrbATfr3oEzTfVrIynDw7e4ZwBZ7-haSuQ1dh-9GEpTF78RMXU8irqTsyOPYjue4WGEP7yvHMNkyFDgdnwA-fmVVre9TNuGWF_dcXbPqdQBgSCmoR3ocmzPkXBes8PyFBlqSO2EET0nW" alt="Oğuzhan Nuhoğlu" class="w-full h-full object-contain">
+          </div>
+          <span class="font-serif text-lg tracking-[0.16em] uppercase font-semibold text-[#FAF7F2]">Oğuzhan Nuhoğlu</span>
+        </div>
+        <p class="text-xs text-white/60 font-light leading-relaxed mb-6 max-w-sm">
+          Mimari hacimlerde zamansız bir denge, organik dokuların zarafeti ve sessiz lüks felsefesiyle şekillenen mekânsal anlatılar.
+        </p>
+        <span class="text-[10px] font-mono text-white/40 tracking-[0.2em] uppercase">REF. 41°02'49.0"N 28°59'42.0"E // ATELIER ISTANBUL</span>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="md:col-span-2 md:col-start-6">
+        <h4 class="text-[11px] font-mono tracking-[0.25em] uppercase text-white/40 mb-4">Navigasyon</h4>
+        <ul class="space-y-2.5 text-xs">
+          <li><a href="index.html" class="text-white/70 hover:text-white transition-colors">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html" class="text-white/70 hover:text-white transition-colors">Hakkımızda</a></li>
+          <li><a href="hizmetler.html" class="text-white font-medium flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-[#9E7B56]"></span>Hizmetlerimiz</a></li>
+          <li><a href="projeler.html" class="text-white/70 hover:text-white transition-colors">Projeler (Portfolyo)</a></li>
+          <li><a href="index.html#iletisim" class="text-white/70 hover:text-white transition-colors">İletişim</a></li>
+        </ul>
+      </div>
+
+      <!-- Services Quick Links -->
+      <div class="md:col-span-3">
+        <h4 class="text-[11px] font-mono tracking-[0.25em] uppercase text-white/40 mb-4">Uzmanlıklar</h4>
+        <ul class="space-y-2.5 text-xs text-white/70">
+          <li><a href="#konut" class="hover:text-white transition-colors">Konut & Villa İç Mimarisi</a></li>
+          <li><a href="#ticari" class="hover:text-white transition-colors">Ticari & Kurumsal Alanlar</a></li>
+          <li><a href="#3d" class="hover:text-white transition-colors">Fotogerçekçi 3D Görselleştirme</a></li>
+          <li><a href="#anahtar-teslim" class="hover:text-white transition-colors">Anahtar Teslim Şantiye Taahhüt</a></li>
+        </ul>
+      </div>
+
+      <!-- Studios & Contact -->
+      <div class="md:col-span-3">
+        <h4 class="text-[11px] font-mono tracking-[0.25em] uppercase text-white/40 mb-4">Stüdyolar & İletişim</h4>
+        <div class="space-y-3 text-xs text-white/70">
+          <div>
+            <span class="text-white/40 block text-[10px] font-mono uppercase">İSTANBUL ATELIER:</span>
+            <span>Abdi İpekçi Cad. No: 42/6 Nişantaşı, İstanbul</span>
+          </div>
+          <div>
+            <span class="text-white/40 block text-[10px] font-mono uppercase">BODRUM STÜDYO:</span>
+            <span>Yalıkavak Marina Çevresi, Bodrum / Muğla</span>
+          </div>
+          <div class="pt-2 text-white/80">
+            <span>info@oguzhannuhoglu.com</span><br>
+            <span>+90 (212) 000 00 00</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- En Alt Telif Hakkı Satırı -->
+    <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] font-light text-white/40 gap-4">
+      <p>© 2026 Oğuzhan Nuhoğlu İç Mimarlık. Tüm Hakları Saklıdır.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-white/80 transition-colors">Gizlilik Politikası</a>
+        <span>•</span>
+        <a href="#" class="hover:text-white/80 transition-colors">Yasal Uyarı</a>
+        <span>•</span>
+        <span class="font-mono text-[10px]">NİŞANTAŞI • BODRUM</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JS for Accordion Interaction -->
+  <script>
+    function toggleAccordion(index) {
+      const contents = document.querySelectorAll('.accordion-content');
+      const icons = document.querySelectorAll('.accordion-icon');
+      
+      contents.forEach((content, i) => {
+        if (i === index) {
+          const isActive = content.classList.contains('active');
+          if (isActive) {
+            content.classList.remove('active');
+            icons[i].classList.remove('active');
+            icons[i].textContent = '+';
+          } else {
+            content.classList.add('active');
+            icons[i].classList.add('active');
+            icons[i].textContent = '×';
+          }
+        } else {
+          content.classList.remove('active');
+          icons[i].classList.remove('active');
+          icons[i].textContent = '+';
+        }
+      });
+    }
+
+    // Default open the first question for better user discovery
+    document.addEventListener('DOMContentLoaded', () => {
+      toggleAccordion(0);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<%- include('../partials/head') %>
+<body>
+<%- include('../partials/navbar') %>
+
+<main id="icerik" class="scroll-stack" data-scroll-stack>
+  <!-- HERO -->
+  <section id="hero" class="layer-section relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ivory pb-20 pt-28 md:items-center md:pb-12" data-hero data-layer-section>
+    <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true" data-hero-bg>
+      <img src="<%= site.heroPoster %>" alt="" fetchpriority="high" decoding="async" class="absolute inset-0 h-full w-full object-cover" data-hero-fallback>
+      <video
+        class="absolute inset-0 h-full w-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        poster="<%= site.heroPoster %>"
+        disablepictureinpicture
+        disableremoteplayback
+        data-hero-video
+      >
+        <source src="<%= site.heroVideoMobile || '/media/hero-mobile.mp4' %>" type="video/mp4" media="(max-width: 767px)">
+        <source src="<%= site.heroVideo %>" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-r from-ivory/80 via-ivory/45 to-ivory/10"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-ivory via-ivory/40 to-transparent"></div>
+    </div>
+
+    <div class="layer-inner container-x relative z-10 w-full" data-layer-inner>
+      <div class="max-w-3xl space-y-6" data-stagger="80">
+        <div class="reveal inline-flex items-center gap-3 rounded-full border border-charcoal/15 bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md">
+          <span class="h-2 w-2 rounded-full bg-bronze"></span>
+          <span class="text-[11px] font-medium uppercase tracking-wide-arch text-charcoal"><%= site.tagline %></span>
+        </div>
+        <h1 class="display reveal text-5xl sm:text-6xl lg:text-7xl" data-reveal="title">
+          <%= site.shortName %><br><span class="font-normal italic text-muted"><%= site.subtitle %></span>
+        </h1>
+        <p class="reveal max-w-xl text-base font-light leading-relaxed text-muted sm:text-lg">
+          Mekânın ruhunu rafine çizgiler, zamansız dokular ve kusursuz işçilikle harmanlayarak kişiye özel yaşam alanları tasarlıyoruz.
+        </p>
+        <div class="reveal flex flex-wrap items-center gap-4 pt-2">
+          <a href="/projeler" class="btn btn-dark">Projeleri Keşfet</a>
+          <a href="#hizmetlerimiz" class="btn btn-outline bg-white/30 backdrop-blur-sm">Hizmetlerimiz</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#studyo" class="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-medium uppercase tracking-wide-arch text-muted md:flex" aria-label="Aşağı kaydır" data-scroll-indicator>
+      <span>Aşağı Kaydırın</span>
+      <span class="flex h-7 w-4 items-start justify-center rounded-full border border-charcoal/30 p-1"><span class="h-2 w-1 rounded-full bg-bronze"></span></span>
+    </a>
+  </section>
+
+  <!-- MARKA TANITIMI -->
+  <section id="studyo" class="layer-section border-t border-charcoal/10 bg-ivory" data-layer-section>
+    <div class="layer-inner section-y" data-layer-inner>
+      <div class="container-x grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-6">
+          <div class="relative border border-charcoal/15 bg-bone p-3 shadow-2xl">
+            <div class="absolute -left-2 -top-2 h-5 w-5 border-l border-t border-bronze"></div>
+            <div class="absolute -bottom-2 -right-2 h-5 w-5 border-b border-r border-bronze"></div>
+            <div class="parallax-frame reveal aspect-[4/3] overflow-hidden bg-ivory" data-reveal="clip">
+              <div class="parallax-media h-full w-full" data-parallax-media="18">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80" alt="Doğal ışıkla aydınlanan, sade ve zarif bir iç mekân" loading="lazy" decoding="async" width="1200" height="900" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-6" data-stagger="75">
+          <p class="eyebrow reveal mb-4 flex items-center gap-3"><span class="h-px w-6 bg-bronze"></span>Stüdyo</p>
+          <h2 class="display reveal text-3xl sm:text-4xl lg:text-5xl" data-reveal="title">Her çizgi, yaşama duyulan saygının bir ifadesidir.</h2>
+          <div class="reveal mt-6 space-y-4 text-sm font-light leading-relaxed text-muted sm:text-base">
+            <p>Oğuzhan Nuhoğlu İç Mimarlık, iç mekân tasarımını yalnızca hacimsel bir planlama değil; bireyin yaşam ritmine hizmet eden bütüncül bir tasarım disiplini olarak görür.</p>
+            <p>Ham meşe, traverten, doğal mermer ve pirinç gibi zamanla güzelleşen hakiki malzemelere sadık kalıyor; lüksü gösterişte değil, oranlarda ve malzemenin dürüstlüğünde arıyoruz.</p>
+          </div>
+          <a href="/hakkimizda" class="link-arrow reveal mt-8">Stüdyo Felsefemiz <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇKİN PROJELER (veritabanından) -->
+  <section id="projeler" class="layer-section border-t border-charcoal/10 bg-bone" data-layer-section>
+    <div class="layer-inner section-y" data-layer-inner>
+      <div class="container-x">
+        <div class="mb-12 flex flex-col justify-between gap-4 md:mb-14 md:flex-row md:items-end" data-stagger="70">
+          <div>
+            <p class="eyebrow reveal">Portfolyo</p>
+            <h2 class="display reveal mt-2 text-3xl sm:text-4xl lg:text-5xl" data-reveal="title">Seçkin Projeler</h2>
+          </div>
+          <a href="/projeler" class="link-arrow reveal">Tüm Projeleri İncele <span aria-hidden="true" class="text-bronze">→</span></a>
+        </div>
+
+        <% if (featuredProjects.length) { %>
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8" data-stagger="85">
+            <% featuredProjects.forEach((project) => { %>
+              <div class="reveal"><%- include('../partials/project-card', { project }) %></div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <div class="rounded-2xl border border-dashed border-charcoal/20 bg-ivory px-6 py-16 text-center">
+            <p class="font-serif text-2xl text-charcoal">Seçkin projeler çok yakında burada.</p>
+            <p class="mt-2 text-sm font-light text-muted">Portfolyomuz güncelleniyor. Projelerimiz hakkında bilgi almak için bizimle iletişime geçebilirsiniz.</p>
+            <a href="/iletisim" class="btn btn-dark mt-6">İletişime Geçin</a>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!-- HİZMETLER ÖZETİ -->
+  <section id="hizmetlerimiz" class="layer-section border-t border-charcoal/10 bg-ivory" data-layer-section>
+    <div class="layer-inner section-y" data-layer-inner>
+      <div class="container-x">
+        <div class="mb-12 flex flex-col justify-between gap-4 md:mb-16 md:flex-row md:items-end" data-stagger="70">
+          <div>
+            <p class="eyebrow reveal">Uzmanlık Alanlarımız</p>
+            <h2 class="display reveal mt-2 text-3xl sm:text-4xl lg:text-5xl" data-reveal="title">Hizmetlerimiz</h2>
+          </div>
+          <p class="reveal max-w-md text-sm font-light leading-relaxed text-muted">Fikirden uygulamaya her aşamada estetik vizyon ve teknik hassasiyet sunuyoruz.</p>
+        </div>
+        <%
+          const summary = [
+            { n: '01', t: 'Konut İç Mimarisi', d: 'Villalar, rezidanslar ve konutlar için yaşam tarzınıza özel, işlevsel ve prestijli çözümler.', a: 'konut' },
+            { n: '02', t: 'Ticari Alan Tasarımı', d: 'Ofis, mağaza, restoran ve konsept mekânlarda marka kimliğini mekâna taşıyan yaklaşımlar.', a: 'ticari' },
+            { n: '03', t: '3D Görselleştirme', d: 'Uygulama öncesinde mekânınızı ışık, doku ve detaylarıyla birlikte deneyimleyin.', a: '3d' },
+            { n: '04', t: 'Anahtar Teslim Uygulama', d: 'Tasarım, tedarik ve şantiye koordinasyonunun tek elden yönetilmesi.', a: 'anahtar-teslim' }
+          ];
+        %>
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6" data-stagger="65">
+          <% summary.forEach((s) => { %>
+            <a href="/hizmetler#<%= s.a %>" class="reveal group flex flex-col justify-between rounded-2xl border border-charcoal/10 bg-white p-7 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-bronze/50 hover:shadow-lg">
+              <div>
+                <span class="font-serif text-3xl font-light text-bronze"><%= s.n %></span>
+                <h3 class="mb-2 mt-4 font-serif text-xl font-medium"><%= s.t %></h3>
+                <p class="text-sm font-light leading-relaxed text-muted"><%= s.d %></p>
+              </div>
+              <span class="mt-8 flex items-center justify-between border-t border-charcoal/5 pt-4 text-[10px] font-medium uppercase tracking-widest text-muted transition-colors group-hover:text-bronze-dark">
+                Detaylar <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TASARIM YAKLAŞIMI -->
+  <section id="yaklasim" class="layer-section border-t border-charcoal/10 bg-charcoal text-bone" data-layer-section>
+    <div class="layer-inner section-y" data-layer-inner>
+      <div class="container-x">
+        <div class="mb-12 max-w-2xl" data-stagger="70">
+          <p class="reveal text-[11px] font-medium uppercase tracking-wide-arch text-bronze-light">Tasarım Yaklaşımı</p>
+          <h2 class="reveal mt-2 font-serif text-3xl font-light leading-tight sm:text-4xl lg:text-5xl" data-reveal="title">Tasarımımızın temelini oluşturan üç ilke</h2>
+        </div>
+        <div class="grid gap-px overflow-hidden rounded-2xl border border-bone/10 bg-bone/10 md:grid-cols-3" data-stagger="80">
+          <% [
+            ['01', 'Zamansız Estetik', 'Geçici trendlerin gürültüsünden arınmış, yıllar geçtikçe değer kazanan yalın ve dingin formlar.'],
+            ['02', 'İşlevsel Kusursuzluk', 'Estetiğin ergonomiyle buluştuğu, her santimetresi günlük yaşam ritmine cevap veren planlar.'],
+            ['03', 'Doğal Doku & Işık', 'Doğal taş, ham meşe, keten ve bronzun gün ışığıyla buluştuğu duyusal derinlik.']
+          ].forEach((p) => { %>
+            <div class="reveal bg-charcoal p-8 lg:p-10">
+              <span class="font-mono text-xs text-bronze-light"><%= p[0] %></span>
+              <h3 class="mb-3 mt-4 font-serif text-2xl font-normal"><%= p[1] %></h3>
+              <p class="text-sm font-light leading-relaxed text-bone/70"><%= p[2] %></p>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="iletisim" class="layer-section border-t border-charcoal/10 bg-ivory" data-layer-section>
+    <div class="layer-inner section-y" data-layer-inner>
+      <div class="container-x grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="space-y-6 lg:col-span-5" data-stagger="70">
+          <p class="eyebrow reveal">Birlikte Başlayalım</p>
+          <h2 class="display reveal text-3xl sm:text-4xl lg:text-5xl" data-reveal="title">Hayalinizdeki mekânı birlikte tasarlayalım.</h2>
+          <p class="reveal max-w-lg text-sm font-light leading-relaxed text-muted">Projeniz, danışmanlık talebiniz veya keşif randevunuz için formu doldurun; ekibimiz sizinle iletişime geçsin.</p>
+          <ul class="reveal space-y-4 pt-2 text-sm font-light text-muted">
+            <% site.offices.forEach((o) => { %>
+              <li class="flex items-start gap-3">
+                <span class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-charcoal/15 bg-white text-bronze" aria-hidden="true">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke-width="1.5"/></svg>
+                </span>
+                <span><strong class="block text-xs font-medium uppercase tracking-wider text-charcoal"><%= o.name %></strong><%= o.address %></span>
+              </li>
+            <% }) %>
+            <li class="flex items-center gap-3">
+              <span class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-charcoal/15 bg-white text-bronze" aria-hidden="true">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v12H4z M4 7l8 6 8-6" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </span>
+              <a href="mailto:<%= site.email %>" class="transition-colors hover:text-bronze-dark"><%= site.email %></a>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-charcoal/15 bg-white text-bronze" aria-hidden="true">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </span>
+              <a href="tel:<%= site.phoneHref %>" class="transition-colors hover:text-bronze-dark"><%= site.phone %></a>
+            </li>
+          </ul>
+        </div>
+        <div class="reveal lg:col-span-7">
+          <%- include('../partials/contact-form') %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../partials/manifesto') %>
+</main>
+
+<%- include('../partials/footer', { scripts: ['/js/contact.js'] }) %>

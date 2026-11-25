@@ -1,0 +1,75 @@
+<%- include('../partials/admin-header') %>
+<div class="mb-6">
+  <p class="eyebrow">Mini CRM</p>
+  <h1 class="display mt-1 text-3xl sm:text-4xl">Müşteri Teklif &amp; Keşif Talepleri</h1>
+</div>
+
+<form method="get" action="/admin/talepler" class="admin-card mb-6 grid gap-3 sm:grid-cols-[1fr_14rem_auto]" role="search">
+  <div>
+    <label class="label" for="q">Ara</label>
+    <input class="field" id="q" name="q" type="search" placeholder="Ad, e-posta, telefon veya mesaj" value="<%= filters.q %>">
+  </div>
+  <div>
+    <label class="label" for="status-filter">Durum</label>
+    <select class="field" id="status-filter" name="status">
+      <option value="">Tümü</option>
+      <% statuses.forEach((s) => { %><option value="<%= s %>" <%= filters.status === s ? 'selected' : '' %>><%= s %></option><% }) %>
+    </select>
+  </div>
+  <div class="flex items-end gap-2">
+    <button class="btn btn-dark btn-sm" type="submit">Filtrele</button>
+    <% if (filters.q || filters.status) { %><a href="/admin/talepler" class="btn btn-outline btn-sm">Temizle</a><% } %>
+  </div>
+</form>
+
+<p class="mb-4 text-xs text-muted"><%= inquiries.length %> talep listeleniyor (yeniden eskiye).</p>
+
+<% if (inquiries.length) { %>
+  <ul class="space-y-5">
+    <% inquiries.forEach((q) => { %>
+      <li class="admin-card" id="talep-<%= q.id %>">
+        <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 class="font-serif text-2xl font-medium"><%= q.full_name %></h2>
+            <p class="mt-1 text-xs text-muted"><%= formatDate(q.created_at) %></p>
+          </div>
+          <span class="badge"><%= q.project_type %></span>
+        </div>
+
+        <dl class="mb-4 grid gap-3 text-sm sm:grid-cols-2">
+          <div><dt class="text-[11px] font-medium uppercase tracking-wider text-muted">E-posta</dt><dd><a class="hover:text-bronze-dark" href="mailto:<%= q.email %>"><%= q.email %></a></dd></div>
+          <div><dt class="text-[11px] font-medium uppercase tracking-wider text-muted">Telefon</dt><dd><a class="hover:text-bronze-dark" href="tel:<%= q.phone.replace(/[^+\d]/g, '') %>"><%= q.phone %></a></dd></div>
+        </dl>
+        <% if (q.message) { %>
+          <div class="mb-5 rounded-xl bg-ivory p-4 text-sm font-light leading-relaxed text-muted"><p class="whitespace-pre-line"><%= q.message %></p></div>
+        <% } %>
+
+        <form action="/admin/talepler/<%= q.id %>/guncelle" method="post" class="grid gap-4 border-t border-charcoal/10 pt-5 lg:grid-cols-[14rem_1fr_auto]" data-inquiry-form>
+          <%- csrfField() %>
+          <div>
+            <label class="label" for="status-<%= q.id %>">Durum</label>
+            <select class="field" id="status-<%= q.id %>" name="status" data-autosubmit>
+              <% statuses.forEach((s) => { %><option value="<%= s %>" <%= q.status === s ? 'selected' : '' %>><%= s %></option><% }) %>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="notes-<%= q.id %>">Özel Not</label>
+            <textarea class="field resize-y" id="notes-<%= q.id %>" name="admin_notes" rows="2" maxlength="3000" placeholder="Görüşme notlarınız..."><%= q.admin_notes || '' %></textarea>
+          </div>
+          <div class="flex items-end"><button type="submit" class="btn btn-dark btn-sm w-full lg:w-auto">Kaydet</button></div>
+        </form>
+
+        <form action="/admin/talepler/<%= q.id %>/sil" method="post" class="mt-4 text-right" data-confirm="Bu talep kalıcı olarak silinecek. Emin misiniz?">
+          <%- csrfField() %>
+          <button type="submit" class="btn btn-danger btn-sm">Talebi Sil</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <div class="admin-card py-16 text-center">
+    <p class="font-serif text-2xl">Talep bulunamadı.</p>
+    <p class="mt-2 text-sm text-muted">Web sitesindeki iletişim formundan gelen talepler burada listelenir.</p>
+  </div>
+<% } %>
+<%- include('../partials/admin-footer') %>

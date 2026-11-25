@@ -1,0 +1,65 @@
+<%- include('../partials/admin-header') %>
+<div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+  <div>
+    <p class="eyebrow">Portfolyo</p>
+    <h1 class="display mt-1 text-3xl sm:text-4xl">Proje Yönetimi</h1>
+  </div>
+  <a href="/admin/projeler/yeni" class="btn btn-dark btn-sm">+ Yeni Proje Ekle</a>
+</div>
+
+<form method="get" action="/admin/projeler" class="admin-card mb-6 grid gap-3 sm:grid-cols-[1fr_14rem_auto]" role="search">
+  <div>
+    <label class="label" for="q">Ara</label>
+    <input class="field" id="q" name="q" type="search" placeholder="Başlık veya lokasyon" value="<%= filters.q %>">
+  </div>
+  <div>
+    <label class="label" for="category">Kategori</label>
+    <select class="field" id="category" name="category">
+      <option value="">Tümü</option>
+      <% projectCategories.forEach((c) => { %><option value="<%= c.value %>" <%= filters.category === c.value ? 'selected' : '' %>><%= c.label %></option><% }) %>
+    </select>
+  </div>
+  <div class="flex items-end gap-2">
+    <button class="btn btn-dark btn-sm" type="submit">Filtrele</button>
+    <% if (filters.q || filters.category) { %><a href="/admin/projeler" class="btn btn-outline btn-sm">Temizle</a><% } %>
+  </div>
+</form>
+
+<p class="mb-4 text-xs text-muted"><%= projects.length %> proje listeleniyor. Ana sayfada en fazla <%= maxFeatured %> proje öne çıkarılabilir.</p>
+
+<% if (projects.length) { %>
+  <ul class="space-y-4">
+    <% projects.forEach((p) => { %>
+      <li class="admin-card flex flex-col gap-4 sm:flex-row sm:items-center">
+        <div class="h-40 w-full flex-shrink-0 overflow-hidden rounded-xl bg-ivory sm:h-24 sm:w-36">
+          <% if (p.image_url) { %><img src="<%= p.image_url %>" alt="<%= p.title %>" loading="lazy" width="288" height="192" class="h-full w-full object-cover"><% } %>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="mb-1 flex flex-wrap items-center gap-2">
+            <h2 class="font-serif text-xl font-medium"><%= p.title %></h2>
+            <% if (p.is_featured) { %><span class="rounded-full bg-bronze px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">Öne Çıkan</span><% } %>
+          </div>
+          <p class="text-xs text-muted"><%= [p.category_label, p.location, p.area, p.year].filter(Boolean).join(' • ') %></p>
+        </div>
+        <div class="flex flex-wrap gap-2 sm:flex-shrink-0">
+          <form action="/admin/projeler/<%= p.id %>/one-cikar" method="post">
+            <%- csrfField() %>
+            <button type="submit" class="btn btn-outline btn-sm"><%= p.is_featured ? 'Öne Çıkarmayı Kaldır' : 'Öne Çıkar' %></button>
+          </form>
+          <a href="/projeler/<%= p.slug %>" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Görüntüle</a>
+          <a href="/admin/projeler/<%= p.id %>/duzenle" class="btn btn-outline btn-sm">Düzenle</a>
+          <form action="/admin/projeler/<%= p.id %>/sil" method="post" data-confirm="“<%= p.title %>” projesi kalıcı olarak silinecek. Emin misiniz?">
+            <%- csrfField() %>
+            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+          </form>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <div class="admin-card py-16 text-center">
+    <p class="font-serif text-2xl">Proje bulunamadı.</p>
+    <p class="mt-2 text-sm text-muted">Filtreleri değiştirin veya yeni bir proje ekleyin.</p>
+  </div>
+<% } %>
+<%- include('../partials/admin-footer') %>

@@ -1,0 +1,182 @@
+<%- include('../partials/head') %>
+<body>
+<%- include('../partials/navbar') %>
+<%
+  const blocks = [
+    {
+      id: 'konut', n: '01', tag: 'Özel Yaşam Alanları', a: 'Konut İç Mimarisi &', b: 'Rezidans Tasarımı',
+      text: 'Villa, tarihi yalı, penthouse ve rezidanslarda; kullanıcının gündelik yaşam alışkanlıklarını mimari bir zarafetle buluşturuyoruz. Mekânın ışık yönünü, tavan oranlarını ve doğal hava sirkülasyonunu gözeterek sakin ve zamana direnen yaşam kurguları oluşturuyoruz.',
+      items: [
+        ['Hacim & Sirkülasyon Planlaması', 'Duvar optimizasyonu, açık-kapalı alan hiyerarşisi ve akustik konfor bölgeleri.'],
+        ['Bespoke (Kişiye Özel) Mobilya', 'Ham ceviz, traverten, mermer ve pirinç detaylı özgün marangozluk imalatları.'],
+        ['Aydınlatma & Duyu Senaryoları', 'Gün döngüsüne uyarlanan dolaylı mimari aydınlatma ve heykelsi armatürler.']
+      ],
+      links: [['/projeler?kategori=konut', 'Konut Projelerimiz'], ['/iletisim', 'Keşif Talebi']],
+      img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=80',
+      alt: 'Doğal malzemeli, ferah bir konut iç mekânı', badge: 'Konut & Rezidans'
+    },
+    {
+      id: 'ticari', n: '02', tag: 'Kurumsal & Ticari', a: 'Ticari Alan &', b: 'Kurumsal Ofis Tasarımı',
+      text: 'Yönetim merkezleri, konsept mağazalar, gastronomi mekânları ve butik oteller için marka değerini fiziksel mekânda somutlaştıran mimari stratejiler geliştiriyoruz. Ziyaretçi deneyimini ve çalışma verimliliğini üst düzey malzeme diliyle birleştiriyoruz.',
+      items: [
+        ['Marka Deneyimi & Mekânsal Kimlik', 'Kurumsal duruşu yansıtan karşılama alanları, sergileme nişleri ve yönlendirme tasarımları.'],
+        ['Akustik & Çalışma Dinamikleri', 'Ahşap duvar kaplamaları, sessiz toplantı alanları ve ergonomik yönetici ofisleri.'],
+        ['Yüksek Trafiğe Uygun Malzemeler', 'Ticari kullanıma uygun doğal taş, mikroçimento zeminler ve dayanıklı tekstiller.']
+      ],
+      links: [['/projeler?kategori=ticari', 'Ticari Portfolyo'], ['/iletisim', 'Kurumsal Görüşme']],
+      img: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80',
+      alt: 'Modern ve sakin bir ofis iç mekânı', badge: 'Ticari & Ofis'
+    },
+    {
+      id: '3d', n: '03', tag: 'Dijital Sunum', a: '3D Görselleştirme &', b: 'Fotogerçekçi Sunum',
+      text: 'Şantiye başlamadan önce mekânı ışık, doku ve malzeme detaylarıyla deneyimlemenizi sağlıyoruz. Fotogerçekçi 3D modellemeler sayesinde tasarım kararlarınızı uygulama öncesinde güvenle değerlendirebilirsiniz.',
+      items: [
+        ['Işık & Atmosfer Simülasyonu', 'Gündüz ve akşam aydınlatma senaryolarının mekân üzerindeki etkisinin önceden görülmesi.'],
+        ['Malzeme & Doku Haritalama', 'Seçilen taş, ahşap ve kumaşların mekândaki görünümünün gerçekçi sunumu.'],
+        ['Konsept Sunumları', 'Müşteri onayına uygun, anlaşılır ve görsel olarak güçlü tasarım sunumları.']
+      ],
+      links: [['/hakkimizda', 'Tasarım Sürecimiz'], ['/iletisim', 'Ön İnceleme Talebi']],
+      img: 'https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=1400&q=80',
+      alt: 'Fotogerçekçi iç mekân görselleştirmesi', badge: '3D Görselleştirme'
+    },
+    {
+      id: 'anahtar-teslim', n: '04', tag: 'Şantiye & Uygulama', a: 'Anahtar Teslim Uygulama &', b: 'Proje Yönetimi',
+      text: 'Çizilen projelerin şantiyede titizlikle gerçeğe dönüşmesini sağlıyoruz. Tasarım, tedarik ve uygulama süreçlerini tek elden koordine ederek bütçe ve takvim yönetimini şeffaf biçimde yürütüyoruz.',
+      items: [
+        ['Şeffaf Bütçe & Takvim', 'Metraj, birim fiyat ve uygulama takviminin proje başında netleştirilmesi.'],
+        ['Zanaatkâr Kadrosu & Tedarik', 'Mermer, marangozluk ve mekanik/elektrik işlerinde uzman ekiplerin koordinasyonu.'],
+        ['Şantiye Denetimi & Raporlama', 'Düzenli saha kontrolleri ve müşteriye ilerleme bilgilendirmeleri.']
+      ],
+      links: [['/iletisim', 'Teklif Alın']],
+      img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1400&q=80',
+      alt: 'Uygulaması tamamlanmış şık bir yaşam alanı', badge: 'Anahtar Teslim'
+    }
+  ];
+  const faqs = [
+    ['Bir projenin tasarım süreci ne kadar sürer?', 'Süre; projenin büyüklüğüne, kapsamına ve onay süreçlerine göre değişir. Keşif görüşmesinin ardından projenize özel bir çalışma takvimi paylaşırız.'],
+    ['İlk keşif ve tanışma görüşmesi nasıl ilerler?', 'Talep formunu doldurduktan sonra ekibimiz sizinle iletişime geçer. Beklentilerinizi ve mekânı değerlendirmek üzere bir görüşme planlanır; teklif sürecinin detayları bu görüşmede netleşir.'],
+    ['Sadece tasarım mı yapıyorsunuz, uygulamayı da üstleniyor musunuz?', 'Her iki model de mümkündür. Yalnızca konsept ve teknik paftalar hazırlayabiliriz veya tasarımın sadakatle hayata geçmesi için uygulama ve proje yönetimini de üstlenebiliriz.'],
+    ['Hangi şehirlerde çalışıyorsunuz?', 'İstanbul-Maltepe’deki ofisimizden hizmet veriyoruz. Farklı lokasyondaki projeler için talep formu üzerinden bizimle iletişime geçebilirsiniz.']
+  ];
+%>
+
+<main id="icerik">
+  <%- include('../partials/page-hero', {
+    eyebrow: 'Kapsamlı Mimari Pratik',
+    title: 'Fikirden Anahtar Teslimine',
+    accent: 'Bütüncül Mimari Hizmetler',
+    lead: 'Mekânları yalnızca estetik birer yüzey olarak değil; insan ölçeğinde sirkülasyon, hakiki malzeme dürüstlüğü ve teknik hassasiyetle hayat bulan yaşam alanları olarak tasarlıyoruz.'
+  }) %>
+
+  <nav class="border-b border-charcoal/10 bg-bone/90 py-4" aria-label="Hizmet bölümleri">
+    <div class="container-x flex flex-wrap items-center justify-center gap-2.5 text-[11px]" data-stagger="50">
+      <% blocks.forEach((b) => { %>
+        <a href="#<%= b.id %>" class="reveal border border-charcoal/10 bg-bone px-4 py-2 uppercase tracking-widest text-charcoal transition-colors hover:border-charcoal"><%= b.n %>. <%= b.a.replace(' &','') %></a>
+      <% }) %>
+    </div>
+  </nav>
+
+  <% blocks.forEach((b, i) => { const flip = i % 2 === 1; %>
+    <section id="<%= b.id %>" class="section-y <%= flip ? 'bg-ivory' : 'bg-bone' %>">
+      <div class="container-x grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+        <div class="group lg:col-span-7 <%= flip ? 'lg:order-2' : '' %>">
+          <div class="relative overflow-hidden border border-charcoal/15 bg-ivory shadow-sm">
+            <div class="parallax-frame reveal aspect-[4/3] overflow-hidden" data-reveal="clip">
+              <div class="parallax-media h-full w-full" data-parallax-media="20">
+                <img src="<%= b.img %>" alt="<%= b.alt %>" loading="lazy" decoding="async" width="1400" height="1050" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+              </div>
+            </div>
+            <span class="absolute bottom-4 <%= flip ? 'right-4' : 'left-4' %> border border-charcoal/10 bg-bone/95 px-4 py-2 font-mono text-[10px] uppercase tracking-arch text-charcoal backdrop-blur-sm"><%= b.badge %> // <%= b.n %></span>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center lg:col-span-5 <%= flip ? 'lg:order-1' : '' %>" data-stagger="65">
+          <div class="reveal mb-4 flex items-center gap-3">
+            <span class="font-mono text-xs font-semibold tracking-arch text-bronze-dark">BÖLÜM <%= b.n %></span>
+            <span class="h-px w-8 bg-bronze"></span>
+            <span class="font-mono text-[10px] uppercase tracking-arch text-muted-light"><%= b.tag %></span>
+          </div>
+          <h2 class="display reveal mb-6 text-3xl sm:text-4xl lg:text-5xl" data-reveal="title"><%= b.a %> <span class="italic text-bronze"><%= b.b %></span></h2>
+          <p class="reveal mb-8 text-sm font-light leading-relaxed text-muted sm:text-base"><%= b.text %></p>
+          <ul class="mb-8 space-y-4 border-y border-charcoal/10 py-6" data-stagger="55">
+            <% b.items.forEach((it) => { %>
+              <li class="reveal flex items-start gap-3">
+                <span class="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-charcoal font-mono text-[9px] text-bone" aria-hidden="true">✓</span>
+                <div>
+                  <h3 class="text-xs font-semibold uppercase tracking-wider text-charcoal"><%= it[0] %></h3>
+                  <p class="mt-0.5 text-xs font-light text-muted"><%= it[1] %></p>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
+          <div class="reveal flex flex-wrap items-center gap-x-6 gap-y-3">
+            <% b.links.forEach((l, li) => { %>
+              <a href="<%= l[0] %>" class="link-arrow <%= li > 0 ? '!text-bronze-dark' : '' %>"><%= l[1] %> <% if (li === 0) { %><span aria-hidden="true">→</span><% } %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </section>
+  <% }) %>
+
+  <!-- Hizmet kapsamı -->
+  <section class="section-y border-t border-charcoal/10 bg-bone">
+    <div class="container-x">
+      <div class="mb-12 max-w-2xl" data-stagger="65">
+        <p class="eyebrow reveal mb-3">Hizmet Kapsamı</p>
+        <h2 class="display reveal text-3xl sm:text-4xl lg:text-5xl" data-reveal="title">Size sunduklarımız</h2>
+      </div>
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" data-stagger="55">
+        <% services.forEach((s, i) => { %>
+          <a href="#<%= s.anchor %>" class="reveal group rounded-2xl border border-charcoal/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-bronze/50 hover:shadow-lg">
+            <span class="font-mono text-xs text-bronze-dark"><%= String(i + 1).padStart(2, '0') %></span>
+            <h3 class="mb-2 mt-3 font-serif text-xl font-medium leading-snug"><%= s.title %></h3>
+            <p class="text-sm font-light leading-relaxed text-muted"><%= s.text %></p>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="section-y border-y border-charcoal/10 bg-ivory">
+    <div class="container-x max-w-4xl">
+      <div class="mb-12 text-center" data-stagger="65">
+        <p class="eyebrow reveal mb-3">Merak Edilenler</p>
+        <h2 class="display reveal text-3xl sm:text-4xl md:text-5xl" data-reveal="title">Sıkça Sorulan Sorular</h2>
+      </div>
+      <div class="space-y-4" data-faq data-stagger="60">
+        <% faqs.forEach((f, i) => { %>
+          <div class="reveal overflow-hidden rounded-xl border border-charcoal/15 bg-white transition-colors hover:border-charcoal/30">
+            <h3>
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6" aria-expanded="<%= i === 0 ? 'true' : 'false' %>" aria-controls="faq-panel-<%= i %>" id="faq-btn-<%= i %>" data-faq-btn>
+                <span class="flex items-baseline gap-3 text-sm font-medium text-charcoal sm:text-base">
+                  <span class="font-mono text-xs text-bronze-dark"><%= String(i + 1).padStart(2, '0') %>.</span><%= f[0] %>
+                </span>
+                <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-charcoal/20 text-lg leading-none text-charcoal" aria-hidden="true" data-faq-icon><%= i === 0 ? '×' : '+' %></span>
+              </button>
+            </h3>
+            <div id="faq-panel-<%= i %>" role="region" aria-labelledby="faq-btn-<%= i %>" class="faq-panel" data-open="<%= i === 0 ? 'true' : 'false' %>" data-faq-panel>
+              <div class="overflow-hidden"><p class="px-5 pb-6 text-sm font-light leading-relaxed text-muted sm:px-6"><%= f[1] %></p></div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-y bg-bone text-center">
+    <div class="container-x reveal mx-auto max-w-3xl" data-reveal="scale">
+      <h2 class="display text-3xl sm:text-4xl md:text-5xl">Hayalinizdeki Yaşam Alanını <span class="italic text-bronze">Birlikte Tasarlayalım</span></h2>
+      <p class="mx-auto mb-10 mt-6 max-w-xl text-sm font-light leading-relaxed text-muted sm:text-base">Konut, villa veya ticari projeniz için danışmanlık almak ve keşif randevusu oluşturmak üzere formu doldurun.</p>
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/iletisim" class="btn btn-dark w-full sm:w-auto">Teklif &amp; Randevu Talebi <span aria-hidden="true">→</span></a>
+        <a href="/projeler" class="btn btn-outline w-full sm:w-auto">Portfolyoya Göz Atın</a>
+      </div>
+      <p class="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-xs text-muted">
+        <span><%= site.phone %></span><span aria-hidden="true">•</span><span><%= site.email %></span>
+      </p>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

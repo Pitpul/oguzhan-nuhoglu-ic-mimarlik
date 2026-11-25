@@ -1,0 +1,65 @@
+<footer class="relative z-10 border-t border-charcoal/10 bg-bone">
+  <div class="container-x py-14 lg:py-20">
+    <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <a href="/" class="mb-6 flex items-center gap-3.5" aria-label="<%= site.name %>">
+          <img src="<%= site.logo %>" alt="" width="44" height="44" loading="lazy" class="h-11 w-11 rounded-full border border-charcoal/15 bg-white object-cover p-0.5">
+          <span class="flex flex-col leading-none">
+            <span class="font-serif text-base font-semibold uppercase tracking-[0.2em]"><%= site.shortName %></span>
+            <span class="mt-1.5 text-[9px] font-medium uppercase tracking-wide-arch text-bronze-dark"><%= site.subtitle %></span>
+          </span>
+        </a>
+        <p class="max-w-sm text-sm font-light leading-relaxed text-muted">
+          Estetik zarafet, işlevsel kusursuzluk ve doğal malzemelerin zamansız ahengiyle şekillenen yaşam alanları.
+        </p>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-charcoal">Menü</h2>
+        <ul class="space-y-3 text-xs font-medium uppercase tracking-wider text-muted">
+          <li><a class="transition-colors hover:text-bronze-dark" href="/">Ana Sayfa</a></li>
+          <li><a class="transition-colors hover:text-bronze-dark" href="/hakkimizda">Hakkımızda</a></li>
+          <li><a class="transition-colors hover:text-bronze-dark" href="/hizmetler">Hizmetlerimiz</a></li>
+          <li><a class="transition-colors hover:text-bronze-dark" href="/projeler">Projeler</a></li>
+          <li><a class="transition-colors hover:text-bronze-dark" href="/iletisim">İletişim</a></li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-charcoal">Stüdyolar</h2>
+        <div class="space-y-4 text-sm font-light text-muted">
+          <% site.offices.forEach((o) => { %>
+            <address class="not-italic">
+              <p class="text-xs font-medium uppercase tracking-wider text-charcoal"><%= o.name %></p>
+              <p><%= o.address %></p>
+            </address>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-charcoal">İletişim</h2>
+        <div class="space-y-3 text-sm font-light text-muted">
+          <p><span class="block text-xs font-medium uppercase tracking-wider text-charcoal">E-posta</span>
+            <a class="transition-colors hover:text-bronze-dark" href="mailto:<%= site.email %>"><%= site.email %></a></p>
+          <p><span class="block text-xs font-medium uppercase tracking-wider text-charcoal">Telefon</span>
+            <a class="transition-colors hover:text-bronze-dark" href="tel:<%= site.phoneHref %>"><%= site.phone %></a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-charcoal/10 pt-8 text-[11px] font-light text-muted sm:flex-row">
+      <p>© <%= new Date().getFullYear() %> <%= site.name %>. Tüm hakları saklıdır.</p>
+      <div class="flex items-center gap-5">
+        <a href="/kvkk" class="transition-colors hover:text-bronze-dark">KVKK Aydınlatma Metni</a>
+        <span class="text-muted/40" aria-hidden="true">•</span>
+        <a href="/admin" class="text-muted/70 transition-colors hover:text-bronze-dark" rel="nofollow">Yönetim Paneli</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js?v=<%= assetVersion %>" defer></script>
+<% (locals.scripts || []).forEach((src) => { %><script src="<%= src %>?v=<%= assetVersion %>" defer></script>
+<% }) %></body>
+</html>
